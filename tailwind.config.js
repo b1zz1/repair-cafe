@@ -34,9 +34,9 @@ module.exports = {
       },
     },
     extend: {
-      dropShadow: {
-        "header": "0 4 20px rgba(92, 96, 137, 0.16)",
-      },
+      boxShadow: {
+        "header": "0px 0px 32px 0px rgba(28,43,204, 0.12)",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

@@ -24,7 +24,7 @@ const Home = () => {
             </div>
             <Input placeholder="Search..." prepend={<PiMagnifyingGlass />} />
           </div>
-          <Image src={wave} alt="Wave" />
+          <Image src={wave} alt="Wave"/>
         </div>
       </main>
     </>
