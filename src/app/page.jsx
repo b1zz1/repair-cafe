@@ -12,7 +12,7 @@ const Home = () => {
     <>
       <main className="flex w-full h-screen flex-col items-center bg-purple.1">
         <Header />
-        <div className="flex h-full flex-col items-center justify-between pt-40 ">
+        <div className="flex h-full flex-col items-center gap-16 justify-between pt-40 ">
           <div div className="flex w-fit flex-col gap-8 px-12" >
             <div>
               <h1 className="text-5xl text-purple.5">
