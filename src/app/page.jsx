@@ -1,19 +1,24 @@
-
+import React from "react";
 import Header from "@components/layout/Header";
 import { PiMagnifyingGlass } from "react-icons/pi";
 import { Input } from "@/components/ui/input";
-import wave from '../midia/wave.svg';
+import wave from "../midia/wave.svg";
 import Image from "next/image";
+import FilterButtonCafé from "@/components/ui/filterButtonCafe";
+import IconCafe from "@/components/ui/iconCafe";
+
 
 let name = "Ana";
 
 const Home = () => {
+
+
   return (
     <>
       <main className="flex w-full h-screen flex-col items-center bg-purple.1">
         <Header />
         <div className="flex h-full flex-col items-center justify-between pt-40 ">
-          <div div className="flex w-fit flex-col gap-8 px-12" >
+          <div div className="flex w-fit flex-col gap-8 px-12">
             <div>
               <h1 className="text-5xl text-purple.5">
                 Ola, <b>{name}</b>
@@ -22,9 +27,13 @@ const Home = () => {
                 O que vamos reparar hoje?
               </h1>
             </div>
-            <Input placeholder="Search..." prepend={<PiMagnifyingGlass />} />
+            <Input
+              placeholder="Pesquisar..."
+              prepend={<IconCafe Icon={PiMagnifyingGlass} />}
+              append={<FilterButtonCafé />}
+            />
           </div>
-          <Image src={wave} alt="Wave"/>
+          <Image src={wave} alt="Wave" />
         </div>
       </main>
     </>
