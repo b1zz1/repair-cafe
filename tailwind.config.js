@@ -36,11 +36,12 @@ module.exports = {
     extend: {
       boxShadow: {
         "header": "0px 0px 32px 0px rgba(28,43,204, 0.12)",
+        "md": "0px 4px 16px 0px rgba(92, 96, 137, 0.16)",
       },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
+        ring: "transparent",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
