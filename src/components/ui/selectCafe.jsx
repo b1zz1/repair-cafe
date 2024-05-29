@@ -33,54 +33,58 @@ const dados = [
   },
 ];
 
-const SelectCafe = ({ IconLeft = PiStorefront, placeholder="Serviços"}) => {
+const SelectCafe = ({ IconLeft = PiStorefront, placeholder = "Serviços" }) => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
-          <PopoverTrigger asChild>
-            <Button
-              role="combobox"
-              aria-expanded={open}
-              variant="select"
-              size="select"
-            >
-              <div className="flex items-center gap-4">
-                <IconCafe Icon={IconLeft} />
-                {value
-                  ? dados.find((dado) => dado.value === value)?.label
-                  : <div className="text-purple.4 font-medium">{placeholder}</div>}
-              </div>
-              <IconCafe Icon={PiCaretDown} />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-full p-0">
-            <Command>
-              <CommandInput placeholder="Pesquisar..." className="h-9" />
-              <CommandEmpty>Não foi possível encontrar</CommandEmpty>
-              <CommandList>
-                <CommandGroup>
-                  {dados.map((dado) => (
-                    <CommandItem
-                      key={dado.value}
-                      value={dado.value}
-                      onSelect={(currentValue) => {
-                        setValue(currentValue === value ? "" : currentValue);
-                        setOpen(false);
-                      }}
-                    >
-                      {dado.label}
-                      {value === dado.value && (
-                        <IconCafe Icon={PiCheck} className="opacity-100" />
-                      )}
-                    </CommandItem>
-                  ))}
-                </CommandGroup>
-              </CommandList>
-            </Command>
-          </PopoverContent>
-        </Popover>
+    <Popover open={open} onOpenChange={setOpen} className="w-full">
+      <PopoverTrigger asChild>
+        <Button
+          role="combobox"
+          aria-expanded={open}
+          variant="select"
+          size="select"
+        >
+          <div className="flex items-center gap-4">
+            <IconCafe Icon={IconLeft} />
+            {value ? (
+              dados.find((dado) => dado.value === value)?.label
+            ) : (
+              <div className="text-purple.4 font-medium">{placeholder}</div>
+            )}
+          </div>
+          <IconCafe Icon={PiCaretDown} />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className=" p-0">
+        <Command>
+          <CommandInput placeholder="Pesquisar..."/>
+          <CommandEmpty>
+            Não foi possível encontrar
+          </CommandEmpty>
+          <CommandList>
+            <CommandGroup>
+              {dados.map((dado) => (
+                <CommandItem
+                  key={dado.value}
+                  value={dado.value}
+                  onSelect={(currentValue) => {
+                    setValue(currentValue === value ? "" : currentValue);
+                    setOpen(false);
+                  }}
+                >
+                  {dado.label}
+                  {value === dado.value && (
+                    <IconCafe Icon={PiCheck} className="opacity-100" />
+                  )}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
   );
 };
 
