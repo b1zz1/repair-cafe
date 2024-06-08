@@ -33,12 +33,12 @@ const dados = [
   },
 ];
 
-const SelectCafe = ({ IconLeft = PiStorefront, placeholder = "Serviços" }) => {
+const SelectCafe = ({ IconLeft = PiStorefront, placeholder = "Serviços", size = "m" }) => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
   return (
-    <Popover open={open} onOpenChange={setOpen} className="w-full">
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
           role="combobox"
@@ -58,7 +58,7 @@ const SelectCafe = ({ IconLeft = PiStorefront, placeholder = "Serviços" }) => {
         </Button>
       </PopoverTrigger>
       <PopoverContent className=" p-0">
-        <Command>
+        <Command size = {size}>
           <CommandInput placeholder="Pesquisar..."/>
           <CommandEmpty>
             Não foi possível encontrar
