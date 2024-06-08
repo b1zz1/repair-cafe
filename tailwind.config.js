@@ -34,6 +34,9 @@ module.exports = {
       },
     },
     extend: {
+      gap: {
+        "md": "1.5rem",
+      },
       boxShadow: {
         "header": "0px 0px 32px 0px rgba(28,43,204, 0.12)",
         "md": "0px 4px 16px 0px rgba(92, 96, 137, 0.16)",

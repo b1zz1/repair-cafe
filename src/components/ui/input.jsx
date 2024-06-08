@@ -29,4 +29,4 @@ const Input = React.forwardRef(({ className, type, prepend, append, ...props }, 
 });
 Input.displayName = "Input";
 
-export { Input };
+export default Input;
