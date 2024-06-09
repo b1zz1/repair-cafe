@@ -1,18 +1,15 @@
 import Header from "@components/layout/header"
 import Input from "@components/ui/input"
 import IconCafe from "@components/ui/iconCafe"
-import ButtonCafe from "@/components/ui/buttonCafe"
 import Wave from "@/components/ui/wave"
 import { Button } from "@components/ui/button"
 
 
 import {
   PiUser,
-  PiUserFill,
   PiEnvelopeSimple,
   PiCalendarDots,
   PiLock,
-  PiLockFill
 } from "react-icons/pi"
 
 const SignUp = () => {
@@ -27,7 +24,7 @@ const SignUp = () => {
           <div className="flex w-full flex-row justify-between gap-md">
             <Input
               placeholder="Nome"
-              prepend={<IconCafe Icon={PiUserFill} />}
+              prepend={<IconCafe Icon={PiUser} />}
               size="full"
             />
             <Input
@@ -36,28 +33,29 @@ const SignUp = () => {
               size="full"
             />
           </div>
-          <div className="flex justify-center flex-col gap-md w-full">
-            <Input
-                placeholder="Email"
-                prepend={<IconCafe Icon={PiEnvelopeSimple} />}
-              />
-            <Input
-                placeholder="Data de Nascimento"
-                prepend={<IconCafe Icon={PiCalendarDots} />}
-              />
-            <Input
-                placeholder="Senha"
-                prepend={<IconCafe Icon={PiLockFill} />}
-              />
-            <Input
-                placeholder="Confirmar Senha"
-                prepend={<IconCafe Icon={PiLock} />}
-              />
-              <div className="flex justify-between w-full">
-                {/* <ButtonCafe variant="outline" label="Cancelar" />
-                <ButtonCafe variant="default" label="Registrar" /> */}
-                <Button variant="outline" size="lg">Cancelar</Button>
-              </div>
+          <div className="flex flex-col gap-10 w-full">
+            <div className="flex justify-center flex-col gap-md w-full">
+              <Input
+                  placeholder="Email"
+                  prepend={<IconCafe Icon={PiEnvelopeSimple} />}
+                />
+              <Input
+                  placeholder="Data de Nascimento"
+                  prepend={<IconCafe Icon={PiCalendarDots} />}
+                />
+              <Input
+                  placeholder="Senha"
+                  prepend={<IconCafe Icon={PiLock} />}
+                />
+              <Input
+                  placeholder="Confirmar Senha"
+                  prepend={<IconCafe Icon={PiLock} />}
+                />
+            </div>
+            <div className="flex justify-between w-full">
+                  <Button variant="outline" size="lg">Cancelar</Button>
+                  <Button variant="default" size="lg">Confirmar</Button>
+            </div>
           </div>
         </form>
         <Wave variant="alt" />
