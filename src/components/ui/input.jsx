@@ -8,7 +8,8 @@ const Input = React.forwardRef(({ className, type, size="full", prepend, append,
     m: "w-[16.4rem]",
     g: "w-[32.8rem]",
     full: "w-full"
-  };
+  }
+  
   return (
     <div className="relative">
       {prepend && (

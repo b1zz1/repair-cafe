@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <>
       <Header />
-      <main className="flex w-full h-screen flex-col items-center bg-purple.1">
+      <main className="flex w-full h-screenheader flex-col items-center bg-purple.1">
         <div className="flex h-full flex-col items-center justify-between gap-16 pt-40 ">
           <div div className="flex w-fit flex-col gap-8 px-12">
             <div>
