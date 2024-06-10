@@ -1,5 +1,5 @@
 import Header from "@components/layout/Header";
-import Wave from "@/components/ui/wave";
+import Wave from "@/components/ui/waveCafe";
 
 const NewService = () => {
     return (

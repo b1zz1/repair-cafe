@@ -9,7 +9,7 @@ import Header from "@components/layout/header"
 import Input from "@components/ui/input"
 import DatePicker from "@components/ui/datePicker"
 import IconCafe from "@components/ui/iconCafe"
-import Wave from "@/components/ui/wave"
+import Wave from "@/components/ui/waveCafe"
 import { Button } from "@components/ui/button"
 
 import {
@@ -36,11 +36,13 @@ const SignUp = () => {
 
   const handleUserSubmit = async (data) => {
     const { name, email, password } = data
+    debugger
     try {
-      const response = await fetch("#", {
+      const response = await fetch("http://localhost:5000/user/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+        Accept: "application/json",
         },
         body: JSON.stringify({ name, email, password }),
       })
@@ -67,6 +69,7 @@ const SignUp = () => {
           <div className="flex w-full flex-row justify-between gap-md">
             <Input
               type="text"
+              name="name"
               placeholder="Nome"
               prepend={<IconCafe Icon={PiUser} />}
               size="full"
@@ -100,6 +103,7 @@ const SignUp = () => {
                 />
                 {errors.password?.message}
               <Input
+                  type="password"
                   placeholder="Confirmar Senha"
                   prepend={<IconCafe Icon={PiLock} />}
                   {...register("confirm_password")}
@@ -108,7 +112,7 @@ const SignUp = () => {
             </div>
             <div className="flex justify-between w-full">
                   <Button variant="outline" size="lg">Cancelar</Button>
-                  <Button type="submit" variant="default" size="lg">Confirmar</Button>
+                  <Button variant="default" size="lg">Confirmar</Button>
             </div>
           </div>
         </form>
