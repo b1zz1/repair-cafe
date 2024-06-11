@@ -16,12 +16,12 @@ const buttonVariants = cva(
         destructive:
           "bg-red-500 text-neutral-50 shadow-sm hover:bg-red-500/90 dark:bg-red-900 dark:text-neutral-50 dark:hover:bg-red-900/90",
         outline:
-          "border-2 border-purple.3 text-purple.5 bg-white shadow-sm hover:border-purple.4 hover:bg-purple20% hover:text-purple.6 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50",
+          "border-2 border-purple.4 text-purple.5 bg-white shadow-sm hover:border-purple.4 hover:bg-purple.6/10 hover:text-purple.6",
         secondary:
           "bg-neutral-100 text-neutral-900 shadow-sm hover:bg-neutral-100/80 dark:bg-neutral-800 dark:text-neutral-50 dark:hover:bg-neutral-800/80",
-        ghost: "hover:bg-purple.5/20",
+        ghost: "hover:bg-purple.5/10 hover:text-purple.5 hover:font-semibold",
         link: "text-neutral-900 underline-offset-4 hover:underline dark:text-neutral-50",
-        select: "flex w-fill justify-between bg-purple.3 text-purple.5 gap-4 h-12 px-2 text-base font-semibold"
+        select: "flex w-fill justify-between bg-purple.3 text-purple.6 gap-4 h-12 px-2 text-base font-semibold",
       },
       size: {
         default: "px-2 py-2",

@@ -3,12 +3,10 @@
 import React from "react";
 import Header from "@components/layout/Header";
 import Input from "@/components/ui/input";
-import wave from "/public/wave.svg";
-import Image from "next/image";
 import FilterButtonCafé from "@/components/ui/filterButtonCafe";
 import IconCafe from "@/components/ui/iconCafe";
-import Wave from "@/components/ui/wave";
 import { PiMagnifyingGlass } from "react-icons/pi";
+import WaveCafe from "@/components/ui/waveCafe";
 
 
 let name = "Ana";
@@ -16,8 +14,8 @@ let name = "Ana";
 const Home = () => {
   return (
     <>
-      <Header />
-      <main className="flex w-full h-screenheader flex-col items-center bg-purple.1">
+      <section className="flex w-full h-screen flex-col items-center bg-purple.1">
+        <Header />
         <div className="flex h-full flex-col items-center justify-between gap-16 pt-40 ">
           <div div className="flex w-fit flex-col gap-8 px-12">
             <div>
@@ -34,9 +32,9 @@ const Home = () => {
               append={<FilterButtonCafé />}
             />
           </div>
-          <Wave variant="default"/>
+          <WaveCafe variant="default"/>
         </div>
-      </main>
+      </section>
     </>
   );
 };
