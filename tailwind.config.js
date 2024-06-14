@@ -16,6 +16,7 @@ module.exports = {
       'purple.4': '#939AFE',
       'purple.5': '#5D6BFF',
       'purple.6': '#5060FF',
+      'purple20%': '#5060FF33',
 
       'white.1': '#FFFFFF',
       'white.2': '#F5F5F5',
@@ -34,7 +35,18 @@ module.exports = {
       },
     },
     extend: {
-      boxShadow: {
+      height: {
+        'screen-header': 'calc(100vh - 20vh)',
+      },
+      padding: {
+        "sm": "0.5rem",
+        "md": "1rem",
+        "lg": "1.5rem",
+      },
+      gap: {
+        "md": "1.5rem",
+      },
+      shadow: {
         "header": "0px 0px 32px 0px rgba(28,43,204, 0.12)",
         "md": "0px 4px 16px 0px rgba(92, 96, 137, 0.16)",
       },

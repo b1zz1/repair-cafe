@@ -8,15 +8,24 @@ import { Dialog, DialogContent } from "@/components/ui/dialog"
 import IconCafe from "./iconCafe";
 import { PiMagnifyingGlass } from "react-icons/pi";
 
-const Command = React.forwardRef(({ className, ...props }, ref) => (
-  <CommandPrimitive
-    ref={ref}
-    className={cn(
-      "flex h-full w-full flex-col overflow-hidden rounded-md bg-white text-neutral-950 ",
-      className
-    )}
-    {...props} />
-))
+const Command = React.forwardRef(({ className, size = "m", ...props }, ref) => {
+  const sizeClasses = {
+    s: "w-[12rem]",
+    m: "w-[16.4rem]",
+    g: "w-[32.8rem]",
+  };
+
+  return (
+    <CommandPrimitive
+      ref={ref}
+      className={cn(
+        "flex h-full flex-col overflow-hidden rounded-md bg-white text-neutral-950",
+        sizeClasses[size],
+        className
+      )}
+      {...props} />
+  );
+})
 Command.displayName = CommandPrimitive.displayName
 
 const CommandDialog = ({
@@ -110,6 +119,7 @@ const CommandShortcut = ({
       {...props} />)
   );
 }
+
 CommandShortcut.displayName = "CommandShortcut"
 
 export {
