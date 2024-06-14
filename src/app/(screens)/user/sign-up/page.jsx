@@ -36,13 +36,12 @@ const SignUp = () => {
 
   const handleUserSubmit = async (data) => {
     const { name, email, password } = data
-    debugger
     try {
       const response = await fetch("http://localhost:5000/user/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-        Accept: "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify({ name, email, password }),
       })
