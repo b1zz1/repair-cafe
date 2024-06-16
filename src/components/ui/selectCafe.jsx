@@ -36,6 +36,11 @@ const dados = [
 const SelectCafe = ({ IconLeft = PiStorefront, placeholder = "Serviços", size = "m" }) => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
+  const sizeClasses = {
+    m: "w-[9.8rem] sm:w-[16.4rem]",
+    g: "w-[20.85rem] sm:w-[34.05rem]",
+    full: "w-full"
+  }
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -45,8 +50,9 @@ const SelectCafe = ({ IconLeft = PiStorefront, placeholder = "Serviços", size =
           aria-expanded={open}
           variant="select"
           size="select"
+          className={`${sizeClasses[size]}`}
         >
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2.5">
             <IconCafe Icon={IconLeft} />
             {value ? (
               dados.find((dado) => dado.value === value)?.label
@@ -57,8 +63,8 @@ const SelectCafe = ({ IconLeft = PiStorefront, placeholder = "Serviços", size =
           <IconCafe Icon={PiCaretDown} />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className=" p-0">
-        <Command size = {size}>
+      <PopoverContent className="p-0">
+        <Command size={size}>
           <CommandInput placeholder="Pesquisar..."/>
           <CommandEmpty>
             Não foi possível encontrar

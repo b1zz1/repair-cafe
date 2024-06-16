@@ -27,7 +27,7 @@ const DatePicker = ({ className, size="full" }) => {
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant={"outline"}
+          variant={"select"}
           className={cn(
             "flex justify-start text-left bg-purple.3 font-medium text-purple.4 h-12 rounded-md px-3 py-1 text-base shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus:ring-purple.5/70 disabled:cursor-not-allowed disabled:opacity-50",
             !date && "",

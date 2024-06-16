@@ -1,23 +1,22 @@
-"use server"
+"use client"
 
-import React from "react"
+import React from "react";
 
-import Header from "@components/layout/Header"
-import Input from "@/components/ui/input"
-import FilterButtonCafé from "@/components/ui/filterButtonCafe"
-import IconCafe from "@/components/ui/iconCafe"
-import Wave from "@/components/ui/waveCafe"
+import Header from "@components/layout/Header";
+import Input from "@/components/ui/input";
+import FilterButtonCafé from "@/components/ui/filterButtonCafe";
+import IconCafe from "@/components/ui/iconCafe";
+import WaveCafe from "@/components/ui/waveCafe";
 
-import { PiMagnifyingGlass } from "react-icons/pi"
-
+import { PiMagnifyingGlass } from "react-icons/pi";
 
 let name = "Ana";
 
 const Home = () => {
   return (
-    <section className="flex w-full h-screen flex-col">
-      <Header />
-      <main className="flex w-full h-screen flex-col items-center bg-purple.1">
+    <>
+      <section className="flex w-full h-screen flex-col items-center bg-purple.1">
+        <Header />
         <div className="flex h-full flex-col items-center justify-between gap-16 pt-40 ">
           <div div className="flex w-fit flex-col gap-8 px-12">
             <div>
@@ -34,11 +33,11 @@ const Home = () => {
               append={<FilterButtonCafé />}
             />
           </div>
-          <Wave variant="default"/>
+          <WaveCafe variant="default"/>
         </div>
-      </main>
-    </section>
-  )
-}
+      </section>
+    </>
+  );
+};
 
-export default Home
+export default Home;

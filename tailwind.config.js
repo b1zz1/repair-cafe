@@ -16,7 +16,7 @@ module.exports = {
       'purple.4': '#939AFE',
       'purple.5': '#5D6BFF',
       'purple.6': '#5060FF',
-      'purple20%': '#5060FF33',
+      'purple.7': '#3C4DFF',
 
       'white.1': '#FFFFFF',
       'white.2': '#F5F5F5',
@@ -24,7 +24,10 @@ module.exports = {
       'white.4': '#4B4C57',
       'white.5': '#2E2F34',
 
-      'error': '#FF3838',
+      'error.1': '#FF7B7B',
+      'error.2': '#FF3838',
+      'error.3': '#F42D2D',
+
       'sucess': '#93D724',
     },
     container: {
@@ -35,9 +38,6 @@ module.exports = {
       },
     },
     extend: {
-      height: {
-        'screen-header': 'calc(100vh - 20vh)',
-      },
       padding: {
         "sm": "0.5rem",
         "md": "1rem",
@@ -57,16 +57,16 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "#5060FF",
+          foreground: "#5060FF",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "#E3E6FF",
+          foreground: "#E3E6FF",
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "#FF3838",
+          foreground: "#FF3838",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
