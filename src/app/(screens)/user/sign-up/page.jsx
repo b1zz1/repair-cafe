@@ -1,22 +1,20 @@
+//http://localhost:3000/user/sign-up
 "use client";
-//http://localho  st:3000/user/sign-up
 
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import Header from "@components/layout/header";
-import Input from "@components/ui/input";
-import DatePicker from "@components/ui/datePicker";
+import Input from "@/components/ui/input/input";
+import DatePicker from "@/components/ui/input/datePicker";
 import IconCafe from "@components/ui/iconCafe";
-import Wave from "@/components/ui/waveCafe"
+import Wave from "@/components/ui/waveCafe";
 import { Button } from "@components/ui/button";
 
 import {
   PiUser,
   PiEnvelopeSimple,
-  PiCalendarDots,
   PiLock,
 } from "react-icons/pi";
 import WaveCafe from "@/components/ui/waveCafe";
@@ -71,7 +69,9 @@ const SignUp = () => {
       <Header />
       <main className="flex w-full h-full flex-col justify-between pt-8 sm:pt-12">
         <div className="flex h-full w-full flex-col justify-center items-center gap-8">
-          <h1 className="text-3xl text-purple.5 select-none sm:text-4xl">Registre-se</h1>
+          <h1 className="text-3xl text-purple.5 select-none sm:text-4xl">
+            Registre-se
+          </h1>
           <form
             onSubmit={handleSubmit(handleUserSubmit)}
             className="flex flex-col gap-5 px-6 py-8 pt-0 w-full md:w-1/3"
@@ -113,7 +113,7 @@ const SignUp = () => {
                     {errors.email?.message}
                   </span>
                 </div>
-                <DatePicker/>
+                <DatePicker />
                 <div className="flex flex-col w-full gap-1 relative">
                   <Input
                     type="password"

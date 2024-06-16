@@ -1,7 +1,6 @@
-import Image from "next/image";
+import IconCafe from "../ui/iconCafe";
 import { Button } from "@/components/ui/button";
 import { PiUserBold, PiCoffee } from "react-icons/pi";
-import IconCafe from "../ui/iconCafe";
 
 const Header = () => {
   return (

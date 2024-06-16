@@ -1,9 +1,10 @@
 "use client";
 
 import React from "react";
+
+import IconCafe from "./iconCafe";
 import { Button } from "./button";
 import { PiCaretDown, PiStorefront, PiCheck } from "react-icons/pi";
-import IconCafe from "./iconCafe";
 import {
   Command,
   CommandEmpty,
@@ -33,14 +34,18 @@ const dados = [
   },
 ];
 
-const SelectCafe = ({ IconLeft = PiStorefront, placeholder = "Serviços", size = "m" }) => {
+const SelectCafe = ({
+  IconLeft = PiStorefront,
+  placeholder = "Serviços",
+  size = "m",
+}) => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
   const sizeClasses = {
     m: "w-[9.8rem] sm:w-[16.4rem]",
     g: "w-[20.85rem] sm:w-[34.05rem]",
-    full: "w-full"
-  }
+    full: "w-full",
+  };
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -65,10 +70,8 @@ const SelectCafe = ({ IconLeft = PiStorefront, placeholder = "Serviços", size =
       </PopoverTrigger>
       <PopoverContent className="p-0">
         <Command size={size}>
-          <CommandInput placeholder="Pesquisar..."/>
-          <CommandEmpty>
-            Não foi possível encontrar
-          </CommandEmpty>
+          <CommandInput placeholder="Pesquisar..." />
+          <CommandEmpty>Não foi possível encontrar</CommandEmpty>
           <CommandList>
             <CommandGroup>
               {dados.map((dado) => (

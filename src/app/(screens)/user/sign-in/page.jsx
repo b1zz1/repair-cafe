@@ -1,18 +1,15 @@
-"use client";
 //http://localhost:3000/user/sign-in
+"use client";
 
 import Header from "@components/layout/header";
-import Input from "@components/ui/input";
+import Input from "@/components/ui/input/input";
 import IconCafe from "@components/ui/iconCafe";
+import WaveCafe from "@/components/ui/waveCafe";
 import { Button } from "@components/ui/button";
 
-import {
-  PiEnvelopeSimple,
-  PiLock,
-} from "react-icons/pi";
-import WaveCafe from "@/components/ui/waveCafe";
+import { PiEnvelopeSimple, PiLock } from "react-icons/pi";
 
-const SignUp = () => {
+const SignIn = () => {
   return (
     <section className="flex w-full h-screen flex-col bg-purple.1">
       <Header />
@@ -34,11 +31,9 @@ const SignUp = () => {
                 prepend={<IconCafe Icon={PiLock} />}
               />
             </div>
-            <div className="flex justify-center w-full gap-5">
-              <Button type="submit" variant="default" size="full">
-                Confirmar
-              </Button>
-            </div>
+            <Button type="submit" variant="default" size="full">
+              Confirmar
+            </Button>
           </form>
         </div>
         <WaveCafe variant={"alt"} />
@@ -47,4 +42,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;

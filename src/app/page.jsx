@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 import React from "react";
 
 import Header from "@components/layout/Header";
-import Input from "@/components/ui/input";
+import Input from "@/components/ui/input/input";
 import FilterButtonCafé from "@/components/ui/filterButtonCafe";
 import IconCafe from "@/components/ui/iconCafe";
 import WaveCafe from "@/components/ui/waveCafe";
@@ -33,7 +33,7 @@ const Home = () => {
               append={<FilterButtonCafé />}
             />
           </div>
-          <WaveCafe variant="default"/>
+          <WaveCafe variant="default" />
         </div>
       </section>
     </>

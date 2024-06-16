@@ -1,20 +1,14 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons"
-import { DayPicker } from "react-day-picker"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
-import IconCafe from "./iconCafe"
-import { PiCaretLeft, PiCaretRight } from "react-icons/pi"
+import IconCafe from "./iconCafe";
+import { DayPicker } from "react-day-picker";
+import { buttonVariants } from "@/components/ui/button";
+import { PiCaretLeft, PiCaretRight } from "react-icons/pi";
 
-function Calendar({
-  className,
-  classNames,
-  showOutsideDays = true,
-  ...props
-}) {
+function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
@@ -25,10 +19,7 @@ function Calendar({
         caption: "flex justify-center pt-1 relative items-center",
         caption_label: "text-sm font-medium",
         nav: "space-x-1 flex items-center",
-        nav_button: cn(
-          buttonVariants({ variant: "ghost" }),
-          "h-7 w-7 p-0"
-        ),
+        nav_button: cn(buttonVariants({ variant: "ghost" }), "h-7 w-7 p-0"),
         nav_button_previous: "absolute left-1",
         nav_button_next: "absolute right-1",
         table: "w-full border-collapse space-y-1",
@@ -59,13 +50,15 @@ function Calendar({
         ...classNames,
       }}
       components={{
-        IconLeft: ({ ...props }) => <IconCafe Icon={PiCaretLeft} size={"s"}/>,
-        IconRight: ({ ...props }) => <IconCafe Icon={PiCaretRight} size={"s"}/>,
+        IconLeft: ({ ...props }) => <IconCafe Icon={PiCaretLeft} size={"s"} />,
+        IconRight: ({ ...props }) => (
+          <IconCafe Icon={PiCaretRight} size={"s"} />
+        ),
       }}
       {...props}
     />
-  )
+  );
 }
-Calendar.displayName = "Calendar"
+Calendar.displayName = "Calendar";
 
-export { Calendar }
+export { Calendar };

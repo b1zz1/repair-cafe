@@ -1,16 +1,22 @@
 //http://localhost:3000/service/new-service
-
-"use client"
+"use client";
 
 import Header from "@components/layout/Header";
 import WaveCafe from "@/components/ui/waveCafe";
 import IconCafe from "@/components/ui/iconCafe";
-import { PiCamera, PiMapPin, PiPhone, PiSparkle, PiStorefront } from "react-icons/pi";
 import LineCafe from "@/components/ui/lineCafe";
-import Input from "@components/ui/input";
+import Input from "@/components/ui/input/input";
 import SelectCafe from "@/components/ui/selectCafe";
-import { Textarea } from "@/components/ui/textarea";
+import { Textarea } from "@/components/ui/input/textarea";
 import { Button } from "@components/ui/button";
+
+import {
+  PiCamera,
+  PiMapPin,
+  PiPhone,
+  PiSparkle,
+  PiStorefront,
+} from "react-icons/pi";
 
 const NewService = () => {
   return (
@@ -50,17 +56,21 @@ const NewService = () => {
                 prepend={<IconCafe Icon={PiCamera} />}
                 placeholderFile="Foto"
               />
-              <SelectCafe size="g" placeholder="Especialidade (Opcional)" IconLeft={PiSparkle}/>
-              <Textarea placeholder="Escreva a descrição aqui"/>
+              <SelectCafe
+                size="g"
+                placeholder="Especialidade (Opcional)"
+                IconLeft={PiSparkle}
+              />
+              <Textarea placeholder="Escreva a descrição aqui" />
             </div>
             <div className="flex justify-between w-full gap-5">
-                <Button variant="outline" size="lg">
-                  Cancelar
-                </Button>
-                <Button type="submit" variant="default" size="lg">
-                  Confirmar
-                </Button>
-              </div>
+              <Button variant="outline" size="lg">
+                Cancelar
+              </Button>
+              <Button type="submit" variant="default" size="lg">
+                Confirmar
+              </Button>
+            </div>
           </div>
         </div>
         <WaveCafe variant={"alt"} />
