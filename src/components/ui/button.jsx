@@ -30,6 +30,7 @@ const buttonVariants = cva(
         icon: "h-9 w-9",
         avatar: "h-10 w-10",
         select: "px-3 py-2",
+        full: "w-full h-10",
       },
     },
     defaultVariants: {
