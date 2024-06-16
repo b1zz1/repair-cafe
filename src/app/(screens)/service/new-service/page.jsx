@@ -1,5 +1,6 @@
-"use client"
 //http://localhost:3000/service/new-service
+
+"use client"
 
 import Header from "@components/layout/Header";
 import WaveCafe from "@/components/ui/waveCafe";

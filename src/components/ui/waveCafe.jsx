@@ -1,7 +1,7 @@
-import Image from "next/image"
+import Image from "next/image";
 
-import wave from "/public/wave.svg"
-import waveAlt from "/public/wave-alt.svg"
+import wave from "/public/wave.svg";
+import waveAlt from "/public/wave-alt.svg";
 
 const WaveCafe = ({ variant="default" }) => {
     return (
@@ -12,4 +12,4 @@ const WaveCafe = ({ variant="default" }) => {
     )
 }
 
-export default WaveCafe
+export default WaveCafe;

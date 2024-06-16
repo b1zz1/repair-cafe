@@ -1,13 +1,14 @@
 "use client"
 
 import React from "react";
+
 import Header from "@components/layout/Header";
 import Input from "@/components/ui/input";
 import FilterButtonCafé from "@/components/ui/filterButtonCafe";
 import IconCafe from "@/components/ui/iconCafe";
-import { PiMagnifyingGlass } from "react-icons/pi";
 import WaveCafe from "@/components/ui/waveCafe";
 
+import { PiMagnifyingGlass } from "react-icons/pi";
 
 let name = "Ana";
 
