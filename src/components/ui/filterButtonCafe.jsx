@@ -20,13 +20,15 @@ const FilterButtonCafé = () => {
         </Button>
       </PopoverTrigger>
 
-      <PopoverContent sideOffset="1" className="bg-white.1 w-72">
-        <SelectCafe> Serviço </SelectCafe>
+      <PopoverContent sideOffset="1" className="bg-white.1">
+        <SelectCafe size="m"> Serviço </SelectCafe>
         <SelectCafe
+          size="m"
           IconLeft={PiSparkle}
           placeholder="Especialidade"
         ></SelectCafe>
         <SelectCafe
+          size="m"
           IconLeft={PiMapTrifold}
           placeholder="Localização"
         ></SelectCafe>

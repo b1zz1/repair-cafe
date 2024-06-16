@@ -21,7 +21,7 @@ const buttonVariants = cva(
           "bg-neutral-100 text-neutral-900 shadow-sm hover:bg-neutral-100/80 dark:bg-neutral-800 dark:text-neutral-50 dark:hover:bg-neutral-800/80",
         ghost: "hover:bg-purple.5/10 hover:text-purple.5 hover:font-semibold",
         link: "text-neutral-900 underline-offset-4 hover:underline dark:text-neutral-50",
-        select: "flex w-fill justify-between bg-purple.3 text-purple.6 gap-4 h-12 px-2 text-base font-semibold",
+        select: "flex w-fill justify-between bg-purple.3 text-purple.6 h-12 text-sm font-semibold",
       },
       size: {
         default: "px-2 py-2",
@@ -29,7 +29,7 @@ const buttonVariants = cva(
         lg: "h-10 rounded-md px-8",
         icon: "h-9 w-9",
         avatar: "h-10 w-10",
-        select: "px-4 py-2",
+        select: "px-3 py-2",
       },
     },
     defaultVariants: {

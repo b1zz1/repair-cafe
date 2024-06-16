@@ -1,5 +1,5 @@
 "use client";
-//http://localhost:3000/user/sign-up
+//http://localho  st:3000/user/sign-up
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -67,20 +67,19 @@ const SignUp = () => {
   return (
     <section className="flex w-full h-screen flex-col bg-purple.1">
       <Header />
-      <main className="flex w-full h-full flex-col justify-between pt-12">
-        <div className="flex h-full w-full flex-col justify-center items-center gap-10">
-          <h1 className="text-xl text-purple.5 select-none sm:text-5xl">Registre-se</h1>
+      <main className="flex w-full h-full flex-col justify-between pt-8 sm:pt-12">
+        <div className="flex h-full w-full flex-col justify-center items-center gap-8">
+          <h1 className="text-3xl text-purple.5 select-none sm:text-4xl">Registre-se</h1>
           <form
             onSubmit={handleSubmit(handleUserSubmit)}
-            className="flex flex-col gap-md p-8 pt-0 w-fit"
+            className="flex flex-col gap-5 px-6 py-8 pt-0 w-full md:w-1/3"
           >
-            <div className="flex w-full flex-row gap-md">
+            <div className="flex w-full flex-col md:flex-row gap-5">
               <div className="flex flex-col w-full gap-1 relative">
                 <Input
                   type="text"
                   placeholder="Nome"
                   prepend={<IconCafe Icon={PiUser} />}
-                  size="full"
                   {...register("name")}
                 />
                 <span className="text-error.1 text-xs absolute inset-y-[3.2rem]">
@@ -92,7 +91,6 @@ const SignUp = () => {
                   type="text"
                   placeholder="Sobrenome"
                   prepend={<IconCafe Icon={PiUser} />}
-                  size="full"
                   {...register("surname")}
                 />
                 <span className="text-error.1 text-xs absolute inset-y-[3.2rem]">
@@ -101,7 +99,7 @@ const SignUp = () => {
               </div>
             </div>
             <div className="flex flex-col gap-10 w-full">
-              <div className="flex justify-center flex-col gap-md w-full">
+              <div className="flex justify-center flex-col gap-5 w-full">
                 <div className="flex flex-col w-full gap-1 relative">
                   <Input
                     type="email"
@@ -113,7 +111,7 @@ const SignUp = () => {
                     {errors.email?.message}
                   </span>
                 </div>
-                <DatePicker size="full" />
+                <DatePicker/>
                 <div className="flex flex-col w-full gap-1 relative">
                   <Input
                     type="password"
@@ -136,7 +134,7 @@ const SignUp = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex justify-between w-full">
+              <div className="flex justify-between w-full gap-5">
                 <Button variant="outline" size="lg">
                   Cancelar
                 </Button>

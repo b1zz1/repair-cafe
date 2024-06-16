@@ -4,9 +4,8 @@ import { cn } from "@/lib/utils";
 
 const Input = React.forwardRef(({ className, type, size="full", prepend, append, ...props }, ref) => {
   const sizeClasses = {
-    s: "w-[12rem]",
-    m: "w-[16.4rem]",
-    g: "w-[32.8rem]",
+    m: "w-[9.8rem] sm:w-[16.4rem]",
+    g: "w-[20.85rem] sm:w-[34.05rem]",
     full: "w-full"
   }
   
@@ -20,7 +19,7 @@ const Input = React.forwardRef(({ className, type, size="full", prepend, append,
       <input
         type={type}
         className={cn(
-          "flex bg-purple.3 font-semibold placeholder:font-medium text-purple.5 h-12 rounded-md p3 py-1 text-base shadow-sm transition-colors placeholder:text-purple.4 focus-visible:outline-none focus-visible:ring-2 focus:ring-purple.5/70 disabled:cursor-not-allowed disabled:opacity-50 pl-10",
+          "flex file:border-0 file:mr-2 file:bg-purple.3 file:text-sm file:font-medium file:text-purple.4 bg-purple.3 font-semibold placeholder:text-sm placeholder:font-medium text-purple.5 h-12 rounded-md p-3 text-base shadow-sm transition-colors placeholder:text-purple.4 focus-visible:outline-none focus-visible:ring-2 focus:ring-purple.5/70 disabled:cursor-not-allowed disabled:opacity-50 pl-10",
           sizeClasses[size],
           className
         )}
