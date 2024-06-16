@@ -38,7 +38,7 @@ const NewService = () => {
               <Input
                 type="text"
                 size="g"
-                placeholder="Ponto de Reparo"
+                placeholder="Nome"
                 prepend={<IconCafe Icon={PiStorefront} />}
               />
               <Input
@@ -47,6 +47,7 @@ const NewService = () => {
                 accept="image/png, image/jpeg"
                 size="g"
                 prepend={<IconCafe Icon={PiCamera} />}
+                placeholderFile="Foto"
               />
               <SelectCafe size="g" placeholder="Especialidade (Opcional)" IconLeft={PiSparkle}/>
               <Textarea placeholder="Escreva a descrição aqui"/>
