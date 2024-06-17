@@ -13,6 +13,10 @@ import { Button } from "@components/ui/button";
 
 import {
   PiCamera,
+  PiEnvelopeSimple,
+  PiFacebookLogo,
+  PiInstagramLogo,
+  PiLinkedinLogo,
   PiMapPin,
   PiPhone,
   PiSparkle,
@@ -27,12 +31,10 @@ const NewService = () => {
       <Header />
       <main className="flex w-full h-full flex-col justify-between pt-12">
         <div className="flex h-full w-full flex-col justify-center items-center gap-10">
-          {content === "Basico" ? (
+          {content === "Basico" &&
             <>
               <div className="flex flex-row items-center">
-                <div
-                  className="bg-gradient-to-r from-purple.4 to-purple.6 p-2.5 rounded-full"
-                >
+                <div className="bg-gradient-to-r from-purple.4 to-purple.6 p-2.5 rounded-full">
                   <IconCafe Icon={PiStorefront} Colors="white" />
                 </div>
                 <LineCafe />
@@ -45,7 +47,7 @@ const NewService = () => {
                 </div>
               </div>
               <div className="flex flex-col gap-8 py-8 pt-0">
-                <h1 className="text-xl text-purple.5 select-none sm:text-4xl">
+                <h1 className="text-xl text-center text-purple.5 select-none sm:text-4xl">
                   Informações Básicas
                 </h1>
                 <div className="flex flex-col gap-5">
@@ -85,19 +87,17 @@ const NewService = () => {
                 </div>
               </div>
             </>
-          ) : (
+          }
+          {content === "Contato" &&
             <>
               <div className="flex flex-row items-center">
                 <div
                   className="bg-gradient-to-r from-purple.4 to-purple.6 p-2.5 rounded-full"
-                  onClick={() => setContent("Basico")}
                 >
                   <IconCafe Icon={PiStorefront} Colors="white" />
                 </div>
                 <LineCafe />
-                <div
-                  className="bg-gradient-to-r from-purple.4 to-purple.6 p-2.5 rounded-full"
-                >
+                <div className="bg-gradient-to-r from-purple.4 to-purple.6 p-2.5 rounded-full">
                   <IconCafe Icon={PiPhone} Colors="white" />
                 </div>
                 <LineCafe />
@@ -106,34 +106,101 @@ const NewService = () => {
                 </div>
               </div>
               <div className="flex flex-col gap-8 py-8 pt-0">
-                <h1 className="text-xl text-purple.5 select-none sm:text-4xl">
-                  Informações Básicas
+                <h1 className="text-xl text-center text-purple.5 select-none sm:text-4xl">
+                  Contato e Redes Sociais
                 </h1>
                 <div className="flex flex-col gap-5">
                   <Input
                     type="text"
                     size="g"
-                    placeholder="Nome"
-                    prepend={<IconCafe Icon={PiStorefront} />}
+                    placeholder="Telefone *"
+                    prepend={<IconCafe Icon={PiPhone} />}
                   />
                   <Input
-                    id="Picture"
-                    type="file"
-                    accept="image/png, image/jpeg"
+                    type="text"
                     size="g"
-                    prepend={<IconCafe Icon={PiCamera} />}
-                    placeholderFile="Foto"
+                    placeholder="E-mail *"
+                    prepend={<IconCafe Icon={PiEnvelopeSimple} />}
                   />
-                  <SelectCafe
+                  <Input
+                    type="text"
                     size="g"
-                    placeholder="Especialidade (Opcional)"
-                    IconLeft={PiSparkle}
+                    placeholder="Link do Instagram *"
+                    prepend={<IconCafe Icon={PiInstagramLogo} />}
                   />
-                  <Textarea placeholder="Escreva a descrição aqui" />
+                  <Input
+                    type="text"
+                    size="g"
+                    placeholder="Link do Facebook *"
+                    prepend={<IconCafe Icon={PiFacebookLogo} />}
+                  />
+                  <Input
+                    type="text"
+                    size="g"
+                    placeholder="Link do Facebook *"
+                    prepend={<IconCafe Icon={PiLinkedinLogo} />}
+                  />
                 </div>
                 <div className="flex justify-between w-full gap-5">
-                  <Button variant="outline" size="lg">
-                    Cancelar
+                  <Button variant="outline" size="lg" onClick={() => setContent("Basico")}>
+                    Voltar
+                  </Button>
+                  <Button
+                    type="submit"
+                    variant="default"
+                    size="lg"
+                    onClick={() => setContent("Local")}
+                  >
+                    Confirmar
+                  </Button>
+                </div>
+              </div>
+            </>
+          }
+          {content === "Local" &&
+            <>
+              <div className="flex flex-row items-center">
+                <div
+                  className="bg-gradient-to-r from-purple.4 to-purple.6 p-2.5 rounded-full"
+                >
+                  <IconCafe Icon={PiStorefront} Colors="white" />
+                </div>
+                <LineCafe />
+                <div className="bg-gradient-to-r from-purple.4 to-purple.6 p-2.5 rounded-full">
+                  <IconCafe Icon={PiPhone} Colors="white"/>
+                </div>
+                <LineCafe />
+                <div className="bg-gradient-to-r from-purple.4 to-purple.6 p-2.5 rounded-full">
+                  <IconCafe Icon={PiMapPin} Colors="white"/>
+                </div>
+              </div>
+              <div className="flex flex-col gap-8 py-8 pt-0">
+                <h1 className="text-xl text-center text-purple.5 select-none sm:text-4xl">
+                  Endereço
+                </h1>
+                <div className="flex flex-col gap-5">
+                <Input
+                    type="text"
+                    size="g"
+                    placeholder="Cidade"
+                    prepend={<IconCafe Icon={PiPhone} />}
+                  />
+                  <Input
+                    type="text"
+                    size="g"
+                    placeholder="Rua"
+                    prepend={<IconCafe Icon={PiEnvelopeSimple} />}
+                  />
+                  <Input
+                    type="text"
+                    size="g"
+                    placeholder="Número"
+                    prepend={<IconCafe Icon={PiInstagramLogo} />}
+                  />
+                </div>
+                <div className="flex justify-between w-full gap-5">
+                  <Button variant="outline" size="lg" onClick={() => setContent("Contato")}>
+                    Voltar
                   </Button>
                   <Button
                     type="submit"
@@ -146,7 +213,7 @@ const NewService = () => {
                 </div>
               </div>
             </>
-          )}
+          }
         </div>
         <WaveCafe variant={"alt"} />
       </main>
