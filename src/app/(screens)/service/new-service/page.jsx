@@ -37,7 +37,7 @@ const NewService = () => {
   return (
     <section className="flex w-full h-screen flex-col bg-purple.1 overflow-hidden">
       <Header />
-      <main className="flex w-full h-full flex-col justify-between pt-12">
+      <main className="flex w-full h-full flex-col justify-between pt-8">
         <div className="flex h-full w-full flex-col justify-center items-center gap-10">
           {content === "Basico" &&
             <>
