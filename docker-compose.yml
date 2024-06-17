@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: pdb
+      TZ: America/Sao_Paulo
+  keycloak:
+    image: quay.io/keycloak/keycloak:20.0
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres/pdb
+      KC_DB_USERNAME: admin
+      KC_DB_PASSWORD: admin
+      TZ: America/Sao_Paulo
+    ports:
+      - 9090:8080
+    command:
+      - start-dev

@@ -7,12 +7,21 @@ import Input from "@/components/ui/input/input";
 import FilterButtonCafé from "@/components/ui/filterButtonCafe";
 import IconCafe from "@/components/ui/iconCafe";
 import WaveCafe from "@/components/ui/waveCafe";
+import {signIn, useSession} from "next-auth/react";
+
 
 import { PiMagnifyingGlass } from "react-icons/pi";
 
 let name = "Ana";
 
 const Home = () => {
+  const { data: sessionData, status } = useSession()
+
+
+  if(status === 'unauthenticated'){
+    return  signIn()
+ }
+
   return (
     <>
       <section className="flex w-full h-screen flex-col items-center bg-purple.1">
