@@ -1,7 +1,7 @@
 //http://localhost:3000/service/new-service
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "@components/layout/Header";
 import WaveCafe from "@/components/ui/waveCafe";
 import IconCafe from "@/components/ui/iconCafe";
@@ -24,7 +24,15 @@ import {
 } from "react-icons/pi";
 
 const NewService = () => {
-  const [content, setContent] = React.useState("Basico");
+  const [content, setContent] = useState(() => {
+    const savedContent = localStorage.getItem("content");
+    return savedContent ? savedContent : "Basico";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("content", content);
+    console.log("Set Item:", content);
+  }, [content]);
 
   return (
     <section className="flex w-full h-screen flex-col bg-purple.1 overflow-hidden">
@@ -82,7 +90,7 @@ const NewService = () => {
                     size="lg"
                     onClick={() => setContent("Contato")}
                   >
-                    Confirmar
+                    Avançar
                   </Button>
                 </div>
               </div>
@@ -151,7 +159,7 @@ const NewService = () => {
                     size="lg"
                     onClick={() => setContent("Local")}
                   >
-                    Confirmar
+                    Avançar
                   </Button>
                 </div>
               </div>
@@ -206,7 +214,6 @@ const NewService = () => {
                     type="submit"
                     variant="default"
                     size="lg"
-                    onClick={() => setContent("Contato")}
                   >
                     Confirmar
                   </Button>
