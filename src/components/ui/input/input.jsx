@@ -39,7 +39,7 @@ const Input = React.forwardRef(
     };
 
     return (
-      <div className="relative w-full">
+      <div className={`relative w-full ${sizeClasses[size]}`}>
         {prepend && (
           <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-purple.5 text-lg">
             {prepend}
