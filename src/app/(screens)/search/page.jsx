@@ -10,23 +10,26 @@ import FilterButtonCafé from "@/components/ui/filterButtonCafe";
 import Card from "@/components/ui/card";
 
 const Search = () => {
-
   return (
     <section className="flex w-full h-screen flex-col bg-purple.1 overflow-hidden">
       <Header />
-      <main className="flex w-full h-full flex-col justify-between px-16 pt-10 ">
-        <div className="w-full flex flex-col items-center gap-10">
-          <Input
-            size="g"
-            placeholder="Pesquisar..."
-            prepend={<IconCafe Icon={PiMagnifyingGlass} />}
-            append={<FilterButtonCafé />}
-          />
-          <div className="flex flex-row flex-wrap w-full gap-4 bg-white.3">
+      <main className="flex w-full h-full flex-col justify-between px-8 py-6 overflow-y-auto sm:py-10 sm:px-16">
+        <div className="w-full flex flex-col items-center gap-6 sm:gap-10">
+          <div className="w-full sm:w-1/3">
+            <Input
+              size="full"
+              placeholder="Pesquisar..."
+              prepend={<IconCafe Icon={PiMagnifyingGlass} />}
+              append={<FilterButtonCafé />}
+            />
+          </div>
+          <div className="flex flex-row flex-wrap justify-center w-full gap-4 sm:justify-between">
             <Card />
-            <span className="w-72 h-10 bg-purple.2"></span>
-            <span className="w-72 h-10 bg-purple.4"></span>
-            <span className="w-72 h-10 bg-purple.2"></span>
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
           </div>
         </div>
       </main>
