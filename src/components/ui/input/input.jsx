@@ -57,7 +57,7 @@ const Input = React.forwardRef(
             <input
               type="text"
               className={cn(
-                "flex items-center bg-purple.3 font-semibold placeholder:text-purple.4 placeholder:text-sm placeholder:font-medium text-purple.5 h-12 rounded-md p-3 text-base shadow-sm focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 pl-10 cursor-pointer",
+                "flex items-center bg-purple.3  font-semibold placeholder:text-purple.4 placeholder:text-sm placeholder:font-medium text-purple.5 h-12 rounded-md p-3 text-base shadow-sm focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 pl-10 cursor-pointer",
                 sizeClasses[size],
                 className
               )}
@@ -71,7 +71,7 @@ const Input = React.forwardRef(
           <input
             type={type}
             className={cn(
-              "flex file:border-0 file:mr-2 file:bg-purple.3 file:text-sm file:font-medium file:text-purple.4 bg-purple.3 font-semibold placeholder:text-sm placeholder:font-medium text-purple.5 h-12 rounded-md p-3 text-base shadow-sm transition-colors placeholder:text-purple.4 focus-visible:outline-none focus-visible:ring-2 focus:ring-purple.5/70 disabled:cursor-not-allowed disabled:opacity-50 pl-10",
+              "flex  bg-purple.3 autofill:bg-purple.5 font-semibold placeholder:text-sm placeholder:font-medium text-purple.5 h-12 rounded-md p-3 text-base shadow-sm transition-colors placeholder:text-purple.4 focus-visible:outline-none focus-visible:ring-2 focus:ring-purple.5/70 disabled:cursor-not-allowed disabled:opacity-50 pl-10",
               sizeClasses[size],
               className
             )}
