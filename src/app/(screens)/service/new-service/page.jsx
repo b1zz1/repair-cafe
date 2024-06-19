@@ -17,6 +17,7 @@ import {
   PiSparkle,
   PiStorefront,
 } from "react-icons/pi";
+import MultiSelectCafe from "@/components/ui/multiSelectCafe";
 
 const NewService = () => {
   return (
@@ -56,7 +57,7 @@ const NewService = () => {
                 prepend={<IconCafe Icon={PiCamera} />}
                 placeholderFile="Foto"
               />
-              <SelectCafe
+              <MultiSelectCafe
                 size="g"
                 placeholder="Especialidade (Opcional)"
                 IconLeft={PiSparkle}

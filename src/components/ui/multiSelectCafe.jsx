@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./button";
 import { PiCaretDown, PiStorefront, PiCheck } from "react-icons/pi";
 import IconCafe from "./iconCafe";
@@ -34,8 +34,16 @@ const dados = [
 ];
 
 const MultiSelectCafe = ({ IconLeft = PiStorefront, placeholder = "Serviços", size = "m" }) => {
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+  const [open, setOpen] = useState(false);
+  const [selectedValues, setSelectedValues] = useState([]);
+
+  const handleSelect = (currentValue) => {
+    setSelectedValues((prevSelected) =>
+      prevSelected.includes(currentValue)
+        ? prevSelected.filter((val) => val !== currentValue)
+        : [...prevSelected, currentValue]
+    );
+  };
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -48,8 +56,8 @@ const MultiSelectCafe = ({ IconLeft = PiStorefront, placeholder = "Serviços", s
         >
           <div className="flex items-center gap-4">
             <IconCafe Icon={IconLeft} />
-            {value ? (
-              dados.find((dado) => dado.value === value)?.label
+            {selectedValues.length > 0 ? (
+              selectedValues.map((val) => dados.find((dado) => dado.value === val)?.label).join(", ")
             ) : (
               <div className="text-purple.4 font-medium">{placeholder}</div>
             )}
@@ -70,12 +78,11 @@ const MultiSelectCafe = ({ IconLeft = PiStorefront, placeholder = "Serviços", s
                   key={dado.value}
                   value={dado.value}
                   onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue);
-                    setOpen(false);
+                    handleSelect(currentValue);
                   }}
                 >
                   {dado.label}
-                  {value === dado.value && (
+                  {selectedValues.includes(dado.value) && (
                     <IconCafe Icon={PiCheck} className="opacity-100" />
                   )}
                 </CommandItem>
@@ -89,5 +96,3 @@ const MultiSelectCafe = ({ IconLeft = PiStorefront, placeholder = "Serviços", s
 };
 
 export default MultiSelectCafe;
-
-//precisa fazer com que o banco de dados possa ser modificavél;
