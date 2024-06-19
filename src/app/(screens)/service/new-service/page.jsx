@@ -35,7 +35,7 @@ const NewService = () => {
   }, [content]);
 
   return (
-    <section className="flex w-full h-fit flex-col bg-purple.1 sm:h-screen">
+    <section className="flex w-full h-full flex-col bg-purple.1 sm:h-screen">
       <Header />
       <main className="flex w-full h-full flex-col justify-between pt-8">
         <div className="flex h-full w-full flex-col justify-center items-center gap-10">

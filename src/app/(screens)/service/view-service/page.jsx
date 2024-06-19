@@ -34,8 +34,8 @@ const Search = () => {
     <section className="flex w-full h-fit flex-col items-center bg-purple.1 md:h-screen">
       <Header />
       <div className="flex h-full flex-col items-center justify-between gap-16 pt-12 md:pt-40 ">
-        <div className="flex flex-col items-center gap-10 px-8 md:flex-row sm:px-12 sm:gap-20">
-            <MidiaCafe src={photoMidia} />
+        <div className="flex flex-col items-center gap-10 px-8  w-full md:flex-row md:w-4/5 sm:px-12 sm:gap-20">
+            <MidiaCafe src={photoMidia} variant="shadow"/>
           <div className="flex flex-col gap-8">
             <h1 className="text-xl text-purple.5 sm:text-4xl">
               {nome}

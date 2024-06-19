@@ -13,7 +13,7 @@ const Header = () => {
       <div className="flex justify-end items-center gap-6">
         <Link href="/service/new-service">
           <Button>Criar Ponto de Reparo</Button>
-        </Link>
+        </Link>    
         <Link href="/user/sign-up">
           <Button
             size="avatar"
