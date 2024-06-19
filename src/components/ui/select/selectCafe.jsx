@@ -2,8 +2,8 @@
 
 import React from "react";
 
-import IconCafe from "./iconCafe";
-import { Button } from "./button";
+import IconCafe from "../iconCafe";
+import { Button } from "../button";
 import { PiCaretDown, PiStorefront, PiCheck } from "react-icons/pi";
 import {
   Command,
@@ -12,12 +12,12 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command";
+} from "@components/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@components/ui/popover";
 
 const dados = [
   {

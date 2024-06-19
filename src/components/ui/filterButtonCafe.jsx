@@ -8,7 +8,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import SelectCafe from "./selectCafe";
+import SelectCafe from "./select/selectCafe";
 import IconCafe from "./iconCafe";
 
 const FilterButtonCafé = () => {

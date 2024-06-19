@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button } from "./button";
+import { Button } from "../button";
 import { PiCaretDown, PiStorefront, PiCheck } from "react-icons/pi";
-import IconCafe from "./iconCafe";
+import IconCafe from "../iconCafe";
 import {
   Command,
   CommandEmpty,
@@ -11,12 +11,12 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command";
+} from "@components/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@components/ui/popover";
 
 const dados = [
   {
