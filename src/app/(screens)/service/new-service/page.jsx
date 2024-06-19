@@ -35,7 +35,7 @@ const NewService = () => {
   }, [content]);
 
   return (
-    <section className="flex w-full h-screen flex-col bg-purple.1 overflow-hidden">
+    <section className="flex w-full h-fit flex-col bg-purple.1 sm:h-screen">
       <Header />
       <main className="flex w-full h-full flex-col justify-between pt-8">
         <div className="flex h-full w-full flex-col justify-center items-center gap-10">
@@ -121,14 +121,8 @@ const NewService = () => {
                   <Input
                     type="text"
                     size="g"
-                    placeholder="Telefone *"
+                    placeholder="Whatapp *"
                     prepend={<IconCafe Icon={PiPhone} />}
-                  />
-                  <Input
-                    type="text"
-                    size="g"
-                    placeholder="E-mail *"
-                    prepend={<IconCafe Icon={PiEnvelopeSimple} />}
                   />
                   <Input
                     type="text"
