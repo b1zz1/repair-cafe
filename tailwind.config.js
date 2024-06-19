@@ -28,6 +28,9 @@ module.exports = {
       'error.2': '#FF3838',
       'error.3': '#F42D2D',
 
+      'teste.1': '#5C6089',
+      'teste.2': '#5058AE',
+
       'sucess': '#93D724',
     },
     container: {
@@ -46,9 +49,10 @@ module.exports = {
       gap: {
         "md": "1.5rem",
       },
-      shadow: {
+      boxShadow: {
         "header": "0px 0px 32px 0px rgba(28,43,204, 0.12)",
         "md": "0px 4px 16px 0px rgba(92, 96, 137, 0.16)",
+        "lg": "8px 8px 32px 0px rgba(80, 96, 255, 0.16) , -8px -8px 32px 0px rgba(255, 255, 255, 1)",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -106,5 +110,18 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ addUtilities }) {
+      addUtilities({
+        '.truncate-5-lines': {
+          display: '-webkit-box',
+          '-webkit-line-clamp': '5',
+          '-webkit-box-orient': 'vertical',
+          overflow: 'hidden',
+          'text-overflow': 'ellipsis',
+        },
+      });
+    },
+  ],
 }
