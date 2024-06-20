@@ -7,9 +7,7 @@ import * as yup from "yup";
 
 import Header from "@components/layout/header";
 import Input from "@/components/ui/input/input";
-import DatePicker from "@/components/ui/input/datePicker";
 import IconCafe from "@components/ui/iconCafe";
-import Wave from "@/components/ui/waveCafe";
 import { Button } from "@components/ui/button";
 
 import { PiUser, PiEnvelopeSimple, PiLock, PiCalendar } from "react-icons/pi";
@@ -28,6 +26,7 @@ const userSchema = yup.object().shape({
     .min(6, "Senha deve ter no mínimo 6 caracteres")
     .required("Senha é obrigatória")
     .oneOf([yup.ref("password"), null], "Senhas não conferem"),
+  date: yup.string().required("Data é obrigatório"),
 });
 
 const SignUp = () => {
@@ -109,14 +108,20 @@ const SignUp = () => {
                     {errors.email?.message}
                   </span>
                 </div>
-                <Input
-                  id="Picture"
-                  type="date"
-                  size="full"
-                  prepend={<IconCafe Icon={PiCalendar} />}
-                  placeholderFile="Data"
-                  className="hide-date"
-                />
+                <div className="flex flex-col w-full gap-1 relative">
+                  <Input
+                    id="Picture"
+                    type="date"
+                    size="full"
+                    prepend={<IconCafe Icon={PiCalendar} />}
+                    placeholderFile="Data"
+                    className="hide-date"
+                    {...register("date")}
+                  />
+                  <span className="text-error.1 text-xs absolute inset-y-[3.1rem]">
+                    {errors.date?.message}
+                  </span>
+                </div>
                 <div className="flex flex-col w-full gap-1 relative">
                   <Input
                     type="password"
@@ -130,6 +135,7 @@ const SignUp = () => {
                 </div>
                 <div className="flex flex-col w-full gap-1 relative">
                   <Input
+                    type="password"
                     placeholder="Confirmar Senha"
                     prepend={<IconCafe Icon={PiLock} />}
                     {...register("confirm_password")}

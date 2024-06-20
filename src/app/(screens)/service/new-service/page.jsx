@@ -1,7 +1,10 @@
 //http://localhost:3000/service/new-service
 "use client";
 
+import { useForm } from "react-hook-form";
 import React, { useEffect, useState } from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 import Header from "@components/layout/Header";
 import WaveCafe from "@/components/ui/waveCafe";
@@ -24,22 +27,32 @@ import {
   PiStorefront,
 } from "react-icons/pi";
 
-const NewService = () => {
-  const [content, setContent] = useState(() => {
-    const savedContent = localStorage.getItem("content");
-    return savedContent ? savedContent : "Basico";
-  });
+const userSchema = yup.object().shape({
+  name: yup.string().required("Nome é obrigatório"),
+});
 
-  useEffect(() => {
-    localStorage.setItem("content", content);
-  }, [content]);
+const NewService = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(userSchema) });
+
+  // const [content, setContent] = useState(() => {
+  //   const savedContent = localStorage.getItem("content");
+  //   return savedContent ? savedContent : "Basico";
+  // });
+
+  // useEffect(() => {
+  //   localStorage.setItem("content", content);
+  // }, [content]);
 
   return (
     <section className="flex w-full h-screen flex-col bg-purple.1 overflow-hidden">
       <Header />
       <main className="flex w-full h-full flex-col justify-between pt-8">
         <div className="flex h-full w-full flex-col justify-center items-center gap-10">
-          {content === "Basico" &&
+          {/* {content === "Basico" && */}
             <>
               <div className="flex flex-row items-center">
                 <div className="bg-gradient-to-r from-purple.4 to-purple.6 p-2.5 rounded-full">
@@ -54,7 +67,7 @@ const NewService = () => {
                   <IconCafe Icon={PiMapPin} />
                 </div>
               </div>
-              <div className="flex flex-col gap-8 py-8 pt-0">
+              <form className="flex flex-col gap-8 py-8 pt-0" onSubmit={handleSubmit}>
                 <h1 className="text-xl text-center text-purple.5 select-none sm:text-4xl">
                   Informações Básicas
                 </h1>
@@ -64,7 +77,12 @@ const NewService = () => {
                     size="g"
                     placeholder="Nome"
                     prepend={<IconCafe Icon={PiStorefront} />}
+                    {...register("name")}
+                    hasError={!!errors.name}
                   />
+                  <span className="text-error.1 text-xs absolute inset-y-[3.1rem]">
+                  {errors.name?.message}
+                  </span>
                   <Input
                     id="Picture"
                     type="file"
@@ -88,15 +106,15 @@ const NewService = () => {
                     type="submit"
                     variant="default"
                     size="lg"
-                    onClick={() => setContent("Contato")}
+                    // onClick={handleSubmit}
                   >
                     Avançar
                   </Button>
                 </div>
-              </div>
+              </form>
             </>
-          }
-          {content === "Contato" &&
+          {/*}
+          {/* {content === "Contato" &&
             <>
               <div className="flex flex-row items-center">
                 <div
@@ -164,8 +182,8 @@ const NewService = () => {
                 </div>
               </div>
             </>
-          }
-          {content === "Local" &&
+          } */}
+          {/* {content === "Local" &&
             <>
               <div className="flex flex-row items-center">
                 <div
@@ -220,7 +238,7 @@ const NewService = () => {
                 </div>
               </div>
             </>
-          }
+          } */}
         </div>
         <WaveCafe variant={"alt"} />
       </main>
