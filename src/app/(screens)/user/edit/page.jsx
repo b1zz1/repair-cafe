@@ -15,8 +15,9 @@ import { Button } from "@components/ui/button";
 import {
   PiUser,
   PiEnvelopeSimple,
-  PiLock,
+  PiLock, PiCalendar,
 } from "react-icons/pi";
+import * as React from "react";
 
 const userSchema = yup.object().shape({
   name: yup.string().required("Nome é obrigatório"),
@@ -105,68 +106,86 @@ const Edit = () => {
       <main className="flex w-full h-full flex-col justify-between pt-8 sm:pt-12">
         <div className="flex h-full w-full flex-col justify-center items-center gap-8">
           <h1 className="text-3xl text-purple.5 select-none sm:text-4xl">
-            Editar usuário
+            Registre-se
           </h1>
           <form
             onSubmit={handleSubmit(handleUserSubmit)}
-            className="flex flex-col gap-5 px-6 py-8 pt-0 w-full md:w-1/3"
+            className="flex flex-col gap-8 px-6 py-8 pt-0 w-full md:w-1/3"
           >
             <div className="flex w-full flex-col md:flex-row gap-5">
               <div className="flex flex-col w-full gap-1 relative">
-                <Input
-                  type="text"
-                  placeholder="Nome"
-                  prepend={<IconCafe Icon={PiUser} />}
-                  {...register("name")}
-                />
-                <span className="text-error.1 text-xs absolute inset-y-[3.2rem]">
-                  {errors.name?.message}
-                </span>
+                  <Input
+                      type="text"
+                      name={"name"}
+                      placeholder="Nome"
+                      prepend={<IconCafe Icon={PiUser} />}
+                      register={register}
+                  />
+                  <span className="text-error.1 text-xs absolute inset-y-[3.2rem]">
+                    {errors.name?.message}
+                  </span>
               </div>
               <div className="flex flex-col w-full gap-1 relative">
                 <Input
-                  type="text"
-                  placeholder="Sobrenome"
-                  prepend={<IconCafe Icon={PiUser} />}
-                  {...register("surname")}
+                    type="text"
+                    name={"surname"}
+                    placeholder="Sobrenome"
+                    prepend={<IconCafe Icon={PiUser} />}
+                    register={register}
                 />
-                <span className="text-error.1 text-xs absolute inset-y-[3.2rem]">
+                <span className="text-error.1 text-xs absolute inset-y-[3.1rem]">
                   {errors.surname?.message}
                 </span>
               </div>
             </div>
             <div className="flex flex-col gap-10 w-full">
-              <div className="flex justify-center flex-col gap-5 w-full">
+              <div className="flex justify-center flex-col gap-8 w-full">
                 <div className="flex flex-col w-full gap-1 relative">
                   <Input
                     type="email"
+                    name={"email"}
                     placeholder="Email"
                     prepend={<IconCafe Icon={PiEnvelopeSimple} />}
-                    {...register("email")}
+                    register={register}
                   />
-                  <span className="text-error.1 text-xs absolute inset-y-[3.2rem]">
+                  <span className="text-error.1 text-xs absolute inset-y-[3.1rem]">
                     {errors.email?.message}
                   </span>
                 </div>
-                <DatePicker />
+                <div className="flex flex-col w-full gap-1 relative">
+                  <Input
+                    id="Picture"
+                    type="date"
+                    size="full"
+                    prepend={<IconCafe Icon={PiCalendar} />}
+                    placeholderFile="Data"
+                    className="hide-date"
+                  />
+                  <span className="text-error.1 text-xs absolute inset-y-[3.1rem]">
+                    {errors.date?.message}
+                  </span>
+                </div>
                 <div className="flex flex-col w-full gap-1 relative">
                   <Input
                     type="password"
+                    name={"password"}
                     placeholder="Senha"
                     prepend={<IconCafe Icon={PiLock} />}
-                    {...register("password")}
+                    register={register}
                   />
-                  <span className="text-error.1 text-xs absolute inset-y-[3.2rem]">
+                  <span className="text-error.1 text-xs absolute inset-y-[3.1rem]">
                     {errors.password?.message}
                   </span>
                 </div>
                 <div className="flex flex-col w-full gap-1 relative">
                   <Input
+                    type="password"
+                    name={"confirm_password"}
                     placeholder="Confirmar Senha"
                     prepend={<IconCafe Icon={PiLock} />}
-                    {...register("confirm_password")}
+                    register={register}
                   />
-                  <span className="text-error.1 text-xs absolute inset-y-[3.2rem]">
+                  <span className="text-error.1 text-xs absolute inset-y-[3.1rem]">
                     {errors.confirm_password?.message}
                   </span>
                 </div>
