@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -23,6 +23,7 @@ const userSchema = yup.object().shape({
   name: yup.string().required("Nome é obrigatório"),
   surname: yup.string().required("Sobrenome é obrigatório"),
   email: yup.string().email("Email inválido").required("Email é obrigatório"),
+  birth_date: yup.date().required("Data de aniversário é obrigatória").typeError("Data de aniversário inválida"),
   password: yup
     .string()
     .min(6, "Senha deve ter no mínimo 6 caracteres")
@@ -38,11 +39,13 @@ const Edit = () => {
   const {
     register,
     handleSubmit,
+    getValues,
     setValue,
     formState: { errors },
   } = useForm({ resolver: yupResolver(userSchema) });
 
-  const requestID = 2;
+  const [username, setUsername] = useState("");
+  const requestID = 4;
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -63,30 +66,29 @@ const Edit = () => {
         const data = await response.json();
 
         console.log("Fetched data:", data);
-        console.log("Fetched name:", data[0]);
 
-
-        setValue("name", data[0]);
-        // setValue("surname", data.surname);
-        setValue("email", data[1]);
-        setValue("password", data.password);
+        setUsername(data.name);
+        setValue("name", data.name);
+        setValue("surname", data.surname);
+        setValue("email", data.email);
+        setValue("birth_date", data.birth_date);
       } catch (error) {
         console.error("Error fetching user data:", error.message);
       }
     };
     fetchUser();
-  }, [setValue]);
+  }, [setValue, requestID]);
 
-  const handleUserSubmit = async (data) => {
-    const { name, email, password } = data;
+  const handleUserSubmit = async () => {
+    const { name, surname, email, password, birth_date} = getValues();
     try {
-      const response = await fetch("http://localhost:5000/user/create", {
-        method: "POST",
+      const response = await fetch(`http://localhost:5000/user/update/${requestID}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify({ name, surname, email, password, birth_date }),
       });
       console.log("Response status:", response.status);
       const result = await response.json();
@@ -106,11 +108,11 @@ const Edit = () => {
       <main className="flex w-full h-full flex-col justify-between pt-8 sm:pt-12">
         <div className="flex h-full w-full flex-col justify-center items-center gap-8">
           <h1 className="text-3xl text-purple.5 select-none sm:text-4xl">
-            Registre-se
+            Editar Perfil
           </h1>
           <form
             onSubmit={handleSubmit(handleUserSubmit)}
-            className="flex flex-col gap-8 px-6 py-8 pt-0 w-full md:w-1/3"
+            className="flex flex-col gap-8 px-6 py-8 pt-0 w-full lg:w-1/3"
           >
             <div className="flex w-full flex-col md:flex-row gap-5">
               <div className="flex flex-col w-full gap-1 relative">
@@ -154,15 +156,16 @@ const Edit = () => {
                 </div>
                 <div className="flex flex-col w-full gap-1 relative">
                   <Input
-                    id="Picture"
                     type="date"
+                    name={"birth_date"}
                     size="full"
                     prepend={<IconCafe Icon={PiCalendar} />}
                     placeholderFile="Data"
                     className="hide-date"
+                    register={register}
                   />
                   <span className="text-error.1 text-xs absolute inset-y-[3.1rem]">
-                    {errors.date?.message}
+                    {errors.birth_date?.message}
                   </span>
                 </div>
                 <div className="flex flex-col w-full gap-1 relative">

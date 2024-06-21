@@ -15,22 +15,20 @@ import WaveCafe from "@/components/ui/waveCafe";
 import * as React from "react";
 
 const userSchema = yup.object().shape({
-  name: yup.string(),
-      // .required("Nome é obrigatório"),
-  surname: yup.string(),
-      // .required("Sobrenome é obrigatório"),
-  email: yup.string().email("Email inválido"),
-      // .required("Email é obrigatório"),
+  name: yup.string().required("Nome é obrigatório"),
+  surname: yup.string().required("Sobrenome é obrigatório"),
+  email: yup.string().email("Email inválido").required("Email é obrigatório"),
+  // birth_date: yup.date().required("Data de aniversário é obrigatória").typeError("Data de aniversário inválida"),
   password: yup
     .string()
-    .min(6, "Senha deve ter no mínimo 6 caracteres"),
-    // .required("Senha é obrigatória"),
+    .min(6, "Senha deve ter no mínimo 6 caracteres")
+    .required("Senha é obrigatória"),
   confirm_password: yup
     .string()
     .min(6, "Senha deve ter no mínimo 6 caracteres")
-    // .required("Senha é obrigatória")
+    .required("Senha é obrigatória")
     .oneOf([yup.ref("password"), null], "Senhas não conferem"),
-  // date: yup.string().required("Data é obrigatório"),
+  date: yup.string().required("Data é obrigatório"),
 });
 
 const SignUp = () => {
@@ -42,8 +40,9 @@ const SignUp = () => {
   } = useForm({ resolver: yupResolver(userSchema) });
 
   const handleUserSubmit = async () => {
-    const { name, surname, email, password } = getValues();
-    console.log({ name, surname, email, password });
+    console.log("oi")
+    const { name, surname, email, password, birth_date } = getValues();
+    console.log({ name, surname, email, password, birth_date });
     try {
       const response = await fetch("http://localhost:5000/user/create", {
         method: "POST",
@@ -51,7 +50,7 @@ const SignUp = () => {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({ name, surname, email, password }),
+        body: JSON.stringify({ name, surname, email, password, birth_date }),
       });
       console.log("Response status:", response.status);
       const result = await response.json();
@@ -75,7 +74,7 @@ const SignUp = () => {
           </h1>
           <form
             onSubmit={handleSubmit(handleUserSubmit)}
-            className="flex flex-col gap-8 px-6 py-8 pt-0 w-full md:w-1/3"
+            className="flex flex-col gap-8 px-6 py-8 pt-0 w-full lg:w-1/3"
           >
             <div className="flex w-full flex-col md:flex-row gap-5">
               <div className="flex flex-col w-full gap-1 relative">
@@ -119,15 +118,16 @@ const SignUp = () => {
                 </div>
                 <div className="flex flex-col w-full gap-1 relative">
                   <Input
-                    id="Picture"
                     type="date"
+                    name={"birth_date"}
                     size="full"
                     prepend={<IconCafe Icon={PiCalendar} />}
                     placeholderFile="Data"
                     className="hide-date"
+                    register={register}
                   />
                   <span className="text-error.1 text-xs absolute inset-y-[3.1rem]">
-                    {errors.date?.message}
+                    {errors.birth_date?.message}
                   </span>
                 </div>
                 <div className="flex flex-col w-full gap-1 relative">
