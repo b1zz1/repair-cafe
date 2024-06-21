@@ -2,6 +2,7 @@ import React from "react";
 
 import MidiaCafe from "./midiaCafe";
 import TagCafe from "./tagCafe";
+import cardMidia from "/public/cardMidia.svg";
 
 const Card = ({
   nome = "Nome do Ponto de Reparo",
@@ -11,7 +12,7 @@ const Card = ({
 }) => {
   return (
     <div className="bg-white.1 rounded-md w-80 outline-none hover:outline-purple.6 hover:outline-offset-2 cursor-pointer shadow-lg ">
-      <MidiaCafe />
+      <MidiaCafe src={cardMidia}/>
       <div className="flex flex-col gap-4 px-5 py-4 h-60">
         <div className="flex flex-col gap-2">
           <div className="Title">
