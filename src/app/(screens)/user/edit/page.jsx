@@ -1,24 +1,29 @@
-//http://localhost:3000/user/sign-up
 "use client";
 
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import Header from "@components/layout/header";
-import Input from "@/components/ui/input/input";
+import DatePicker from "@/components/ui/input/datePicker";
 import IconCafe from "@components/ui/iconCafe";
+import WaveCafe from "@/components/ui/waveCafe";
+import Input from "@/components/ui/input/input";
 import { Button } from "@components/ui/button";
 
-import { PiUser, PiEnvelopeSimple, PiLock, PiCalendar } from "react-icons/pi";
-import WaveCafe from "@/components/ui/waveCafe";
+import {
+  PiUser,
+  PiEnvelopeSimple,
+  PiLock, PiCalendar,
+} from "react-icons/pi";
 import * as React from "react";
 
 const userSchema = yup.object().shape({
   name: yup.string().required("Nome é obrigatório"),
   surname: yup.string().required("Sobrenome é obrigatório"),
   email: yup.string().email("Email inválido").required("Email é obrigatório"),
-  // birth_date: yup.date().required("Data de aniversário é obrigatória").typeError("Data de aniversário inválida"),
+  birth_date: yup.date().required("Data de aniversário é obrigatória").typeError("Data de aniversário inválida"),
   password: yup
     .string()
     .min(6, "Senha deve ter no mínimo 6 caracteres")
@@ -28,24 +33,57 @@ const userSchema = yup.object().shape({
     .min(6, "Senha deve ter no mínimo 6 caracteres")
     .required("Senha é obrigatória")
     .oneOf([yup.ref("password"), null], "Senhas não conferem"),
-  date: yup.string().required("Data é obrigatório"),
 });
 
-const SignUp = () => {
+const Edit = () => {
   const {
     register,
     handleSubmit,
     getValues,
+    setValue,
     formState: { errors },
   } = useForm({ resolver: yupResolver(userSchema) });
 
+  const [username, setUsername] = useState("");
+  const requestID = 4;
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/user/read/${requestID}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.message || "Something went wrong");
+        }
+
+        const data = await response.json();
+
+        console.log("Fetched data:", data);
+
+        setUsername(data.name);
+        setValue("name", data.name);
+        setValue("surname", data.surname);
+        setValue("email", data.email);
+        setValue("birth_date", data.birth_date);
+      } catch (error) {
+        console.error("Error fetching user data:", error.message);
+      }
+    };
+    fetchUser();
+  }, [setValue, requestID]);
+
   const handleUserSubmit = async () => {
-    console.log("oi")
-    const { name, surname, email, password, birth_date } = getValues();
-    console.log({ name, surname, email, password, birth_date });
+    const { name, surname, email, password, birth_date} = getValues();
     try {
-      const response = await fetch("http://localhost:5000/user/create", {
-        method: "POST",
+      const response = await fetch(`http://localhost:5000/user/update/${requestID}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -70,7 +108,7 @@ const SignUp = () => {
       <main className="flex w-full h-full flex-col justify-between pt-8 sm:pt-12">
         <div className="flex h-full w-full flex-col justify-center items-center gap-8">
           <h1 className="text-3xl text-purple.5 select-none sm:text-4xl">
-            Registre-se
+            Editar Perfil
           </h1>
           <form
             onSubmit={handleSubmit(handleUserSubmit)}
@@ -172,4 +210,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Edit;
