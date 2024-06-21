@@ -10,7 +10,7 @@ const WaveCafe = ({ variant = "default" }) => {
         <Image
           src={wave}
           alt="Wave"
-          className="pointer-events-none bg-purple.1 select-none"
+          className="pointer-events-none bg-purple.1 select-none w-full"
           height="auto"
           width="auto"
         />
@@ -19,7 +19,7 @@ const WaveCafe = ({ variant = "default" }) => {
         <Image
           src={waveAlt}
           alt="Wave"
-          className=" pointer-events-none bg-purple.1 select-none"
+          className=" pointer-events-none bg-purple.1 select-none w-full"
           height="auto"
           width="auto"
         />
