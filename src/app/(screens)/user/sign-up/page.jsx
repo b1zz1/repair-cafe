@@ -30,7 +30,7 @@ const userSchema = yup.object().shape({
     .min(6, "Senha deve ter no mínimo 6 caracteres")
     // .required("Senha é obrigatória")
     .oneOf([yup.ref("password"), null], "Senhas não conferem"),
-  date: yup.string().required("Data é obrigatório"),
+  // date: yup.string().required("Data é obrigatório"),
 });
 
 const SignUp = () => {
