@@ -8,7 +8,7 @@ const Card = ({
   nome = "Nome do Ponto de Reparo",
   localizacao = "Localizacao",
   descricao = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-  tag = "Especialidade",
+  tags = [{ id: "1", text: "Especialidade" },]
 }) => {
   return (
     <div className="bg-white.1 rounded-md w-80 outline-none hover:outline-purple.6 hover:outline-offset-2 cursor-pointer shadow-lg ">
@@ -24,9 +24,9 @@ const Card = ({
           </text>
         </div>
         <div className="flex flex-wrap flex-row h-fit overflow-hidden gap-2">
-          <TagCafe text={tag} />
-          <TagCafe text={tag} />
-          <TagCafe text={tag} />
+        {tags.map(i => (
+            <TagCafe key={i.id} text={i.text} />
+          ))}
         </div>
       </div>
     </div>
