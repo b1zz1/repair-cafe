@@ -13,7 +13,7 @@ const Search = () => {
   return (
     <section className="flex w-full h-screen flex-col bg-purple.1 overflow-hidden">
       <Header />
-      <main className="flex w-FIT h-full flex-col justify-between px-8 py-6 overflow-y-auto sm:py-10 sm:px-16">
+      <main className="flex w-full h-full flex-col justify-between px-8 py-6 overflow-y-auto sm:py-10 sm:px-16">
         <div className="w-full flex flex-col items-center gap-6 sm:gap-10">
           <div className="w-full sm:w-1/3">
             <Input
