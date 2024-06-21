@@ -16,7 +16,6 @@ const Input = React.forwardRef(
     },
     ref
   ) => {
-    var register2 = () => {}
     const [fileName, setFileName] = React.useState("");
     const internalRef = React.useRef(null);
 

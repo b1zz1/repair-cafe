@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-const Textarea = React.forwardRef(({ className, size, ...props }, ref) => {
+const Textarea = React.forwardRef(({ className, size, register, ...props }, ref) => {
   const sizeClasses = {
     m: "w-[9.8rem] sm:w-[16.4rem]",
     g: "w-[20.85rem] sm:w-[34.05rem]",
@@ -17,6 +17,7 @@ const Textarea = React.forwardRef(({ className, size, ...props }, ref) => {
       )}
       ref={ref}
       {...props}
+      {...(register ? register(props?.name || '') : {})}
     />
   );
 });

@@ -29,30 +29,68 @@ import {
 
 const userSchema = yup.object().shape({
   name: yup.string().required("Nome é obrigatório"),
+  email: yup.string().email("Email inválido").required("Email é obrigatório"),
+  description: yup.string(),
+  whatsapp: yup.string(),
+  instagram: yup.string(),
+  facebook: yup.string(),
+  linkedin: yup.string(),
+  number: yup.string(),
+  street: yup.string(),
+  city: yup.string(),
 });
 
 const NewService = () => {
+  // Cache
+  const [content, setContent] = useState(() => {
+    const savedContent = localStorage.getItem("content");
+    return savedContent ? savedContent : "Basico";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("content", content);
+    console.log("Saving content:", content);
+  }, [content]);
+
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm({ resolver: yupResolver(userSchema) });
 
-  // const [content, setContent] = useState(() => {
-  //   const savedContent = localStorage.getItem("content");
-  //   return savedContent ? savedContent : "Basico";
-  // });
+  const onSubmit = async () => {
+    const { name, email, description, whatsapp } = getValues();
+    console.log({name, email, description, whatsapp});
 
-  // useEffect(() => {
-  //   localStorage.setItem("content", content);
-  // }, [content]);
+    try {
+      const response = await fetch("http://localhost:5000/service/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({ name, email, description, whatsapp }),
+      });
+      console.log("Response status:", response.status);
+      const result = await response.json();
+      console.log("Server response:", result);
+
+      if (!response.ok) {
+        throw new Error(result.message || "Something went wrong");
+      }
+      // Handle successful response
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
+  }
 
   return (
     <section className="flex w-full h-full flex-col bg-purple.1 sm:h-screen">
       <Header />
       <main className="flex w-full h-full flex-col justify-between pt-8">
         <div className="flex h-full w-full flex-col justify-center items-center gap-10">
-          {/* {content === "Basico" && */}
+          {content === "Basico" &&
             <>
               <div className="flex flex-row items-center">
                 <div className="bg-gradient-to-r from-purple.4 to-purple.6 p-2.5 rounded-full">
@@ -67,22 +105,26 @@ const NewService = () => {
                   <IconCafe Icon={PiMapPin} />
                 </div>
               </div>
-              <form className="flex flex-col gap-8 py-8 pt-0" onSubmit={handleSubmit}>
+              <form className="flex flex-col gap-8 py-8 pt-0">
                 <h1 className="text-xl text-center text-purple.5 select-none sm:text-4xl">
                   Informações Básicas
                 </h1>
                 <div className="flex flex-col gap-5">
                   <Input
                     type="text"
+                    name="name"
                     size="g"
                     placeholder="Nome"
                     prepend={<IconCafe Icon={PiStorefront} />}
-                    {...register("name")}
-                    hasError={!!errors.name}
+                    register={register}
                   />
-                  <span className="text-error.1 text-xs absolute inset-y-[3.1rem]">
-                  {errors.name?.message}
-                  </span>
+                  <Input
+                    type="email"
+                    name={"email"}
+                    placeholder="Email"
+                    prepend={<IconCafe Icon={PiEnvelopeSimple} />}
+                    register={register}
+                  />
                   <Input
                     id="Picture"
                     type="file"
@@ -96,7 +138,11 @@ const NewService = () => {
                     placeholder="Especialidade (Opcional)"
                     IconLeft={PiSparkle}
                   />
-                  <Textarea placeholder="Escreva a descrição aqui" />
+                  <Textarea
+                      name="description"
+                      placeholder="Escreva a descrição aqui"
+                      register={register}
+                  />
                 </div>
                 <div className="flex justify-between w-full gap-5">
                   <Button variant="outline" size="lg">
@@ -106,20 +152,18 @@ const NewService = () => {
                     type="submit"
                     variant="default"
                     size="lg"
-                    // onClick={handleSubmit}
+                    onClick={() => setContent("Contato")}
                   >
                     Avançar
                   </Button>
                 </div>
               </form>
             </>
-          {/*}
-          {/* {content === "Contato" &&
+          }
+          {content === "Contato" &&
             <>
               <div className="flex flex-row items-center">
-                <div
-                  className="bg-gradient-to-r from-purple.4 to-purple.6 p-2.5 rounded-full"
-                >
+                <div className="bg-gradient-to-r from-purple.4 to-purple.6 p-2.5 rounded-full">
                   <IconCafe Icon={PiStorefront} Colors="white" />
                 </div>
                 <LineCafe />
@@ -131,34 +175,42 @@ const NewService = () => {
                   <IconCafe Icon={PiMapPin} />
                 </div>
               </div>
-              <div className="flex flex-col gap-8 py-8 pt-0">
+              <form className="flex flex-col gap-8 py-8 pt-0">
                 <h1 className="text-xl text-center text-purple.5 select-none sm:text-4xl">
                   Contato e Redes Sociais
                 </h1>
                 <div className="flex flex-col gap-5">
                   <Input
                     type="text"
+                    name={"whatsapp"}
                     size="g"
-                    placeholder="Whatapp *"
+                    placeholder="Whatsapp *"
                     prepend={<IconCafe Icon={PiPhone} />}
+                    register={register}
                   />
                   <Input
                     type="text"
+                    name={"instagram"}
                     size="g"
                     placeholder="Link do Instagram *"
                     prepend={<IconCafe Icon={PiInstagramLogo} />}
+                    register={register}
                   />
                   <Input
                     type="text"
+                    name={"facebook"}
                     size="g"
                     placeholder="Link do Facebook *"
                     prepend={<IconCafe Icon={PiFacebookLogo} />}
+                    register={register}
                   />
                   <Input
                     type="text"
+                    name={"linkedin"}
                     size="g"
-                    placeholder="Link do Facebook *"
+                    placeholder="Link do Linkedin *"
                     prepend={<IconCafe Icon={PiLinkedinLogo} />}
+                    register={register}
                   />
                 </div>
                 <div className="flex justify-between w-full gap-5">
@@ -166,7 +218,6 @@ const NewService = () => {
                     Voltar
                   </Button>
                   <Button
-                    type="submit"
                     variant="default"
                     size="lg"
                     onClick={() => setContent("Local")}
@@ -174,10 +225,10 @@ const NewService = () => {
                     Avançar
                   </Button>
                 </div>
-              </div>
+              </form>
             </>
-          } */}
-          {/* {content === "Local" &&
+          }
+           {content === "Local" &&
             <>
               <div className="flex flex-row items-center">
                 <div
@@ -194,28 +245,34 @@ const NewService = () => {
                   <IconCafe Icon={PiMapPin} Colors="white"/>
                 </div>
               </div>
-              <div className="flex flex-col gap-8 py-8 pt-0">
+              <form type="submit" onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-8 py-8 pt-0">
                 <h1 className="text-xl text-center text-purple.5 select-none sm:text-4xl">
                   Endereço
                 </h1>
                 <div className="flex flex-col gap-5">
                 <Input
                     type="text"
+                    name={"city"}
                     size="g"
                     placeholder="Cidade"
                     prepend={<IconCafe Icon={PiPhone} />}
+                    register={register}
                   />
                   <Input
                     type="text"
+                    name={"street"}
                     size="g"
                     placeholder="Rua"
                     prepend={<IconCafe Icon={PiEnvelopeSimple} />}
+                    register={register}
                   />
                   <Input
                     type="text"
+                    name={"number"}
                     size="g"
                     placeholder="Número"
                     prepend={<IconCafe Icon={PiInstagramLogo} />}
+                    register={register}
                   />
                 </div>
                 <div className="flex justify-between w-full gap-5">
@@ -223,16 +280,16 @@ const NewService = () => {
                     Voltar
                   </Button>
                   <Button
-                    type="submit"
+                    type={"submit"}
                     variant="default"
                     size="lg"
                   >
                     Confirmar
                   </Button>
                 </div>
-              </div>
+                </form>
             </>
-          } */}
+          }
         </div>
         <WaveCafe variant={"alt"} />
       </main>
