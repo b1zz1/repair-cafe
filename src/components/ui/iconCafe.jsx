@@ -5,6 +5,7 @@ import { PiStorefront } from "react-icons/pi";
 const IconCafe = ({ Icon = PiStorefront, size, Colors }) => {
   const sizeClasses = {
     s: "w-[1rem] h-[1rem]",
+    g: "w-[2rem] h-[2rem]",
   };
 
   const colorsClasses = {
