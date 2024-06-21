@@ -121,6 +121,20 @@ module.exports = {
           overflow: 'hidden',
           'text-overflow': 'ellipsis',
         },
+        '.hide-date': {
+          '-webkit-appearance': 'none',
+          '-moz-appearance': 'none',
+          'appearance': 'none',
+          '&::-webkit-inner-spin-button': {
+            'display': 'none',
+          },
+          '&::-webkit-calendar-picker-indicator': {
+            'display': 'none',
+          },
+          '&::-ms-clear': {
+            'display': 'none',
+          },
+        },
       });
     },
   ],

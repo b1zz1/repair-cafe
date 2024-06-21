@@ -7,12 +7,28 @@ import Input from "@/components/ui/input/input";
 import FilterButtonCafé from "@/components/ui/filterButtonCafe";
 import IconCafe from "@/components/ui/iconCafe";
 import WaveCafe from "@/components/ui/waveCafe";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { PiMagnifyingGlass } from "react-icons/pi";
 
 let name = "Ana";
 
 const Home = () => {
+
+  const router = useRouter();
+  const [inputValue, setInputValue] = useState("");
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      router.push(`/search?q=${inputValue}`);
+    }
+  };
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
   return (
     <>
       <section className="flex w-full h-screen flex-col items-center bg-purple.1">
@@ -31,6 +47,8 @@ const Home = () => {
               placeholder="Pesquisar..."
               prepend={<IconCafe Icon={PiMagnifyingGlass} />}
               append={<FilterButtonCafé />}
+              onChange={handleChange}
+              onKeyDown={handleKeyDown}
             />
           </div>
           <WaveCafe variant="default" />

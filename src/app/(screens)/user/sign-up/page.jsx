@@ -7,16 +7,10 @@ import * as yup from "yup";
 
 import Header from "@components/layout/header";
 import Input from "@/components/ui/input/input";
-import DatePicker from "@/components/ui/input/datePicker";
 import IconCafe from "@components/ui/iconCafe";
-import Wave from "@/components/ui/waveCafe";
 import { Button } from "@components/ui/button";
 
-import {
-  PiUser,
-  PiEnvelopeSimple,
-  PiLock,
-} from "react-icons/pi";
+import { PiUser, PiEnvelopeSimple, PiLock, PiCalendar } from "react-icons/pi";
 import WaveCafe from "@/components/ui/waveCafe";
 import * as React from "react";
 
@@ -36,6 +30,7 @@ const userSchema = yup.object().shape({
     .min(6, "Senha deve ter no mínimo 6 caracteres")
     // .required("Senha é obrigatória")
     .oneOf([yup.ref("password"), null], "Senhas não conferem"),
+  date: yup.string().required("Data é obrigatório"),
 });
 
 const SignUp = () => {
@@ -80,7 +75,7 @@ const SignUp = () => {
           </h1>
           <form
             onSubmit={handleSubmit(handleUserSubmit)}
-            className="flex flex-col gap-5 px-6 py-8 pt-0 w-full md:w-1/3"
+            className="flex flex-col gap-8 px-6 py-8 pt-0 w-full md:w-1/3"
           >
             <div className="flex w-full flex-col md:flex-row gap-5">
               <div className="flex flex-col w-full gap-1 relative">
@@ -103,13 +98,13 @@ const SignUp = () => {
                     prepend={<IconCafe Icon={PiUser} />}
                     register={register}
                 />
-                <span className="text-error.1 text-xs absolute inset-y-[3.2rem]">
+                <span className="text-error.1 text-xs absolute inset-y-[3.1rem]">
                   {errors.surname?.message}
                 </span>
               </div>
             </div>
             <div className="flex flex-col gap-10 w-full">
-              <div className="flex justify-center flex-col gap-5 w-full">
+              <div className="flex justify-center flex-col gap-8 w-full">
                 <div className="flex flex-col w-full gap-1 relative">
                   <Input
                     type="email"
@@ -118,11 +113,23 @@ const SignUp = () => {
                     prepend={<IconCafe Icon={PiEnvelopeSimple} />}
                     register={register}
                   />
-                  <span className="text-error.1 text-xs absolute inset-y-[3.2rem]">
+                  <span className="text-error.1 text-xs absolute inset-y-[3.1rem]">
                     {errors.email?.message}
                   </span>
                 </div>
-                <DatePicker />
+                <div className="flex flex-col w-full gap-1 relative">
+                  <Input
+                    id="Picture"
+                    type="date"
+                    size="full"
+                    prepend={<IconCafe Icon={PiCalendar} />}
+                    placeholderFile="Data"
+                    className="hide-date"
+                  />
+                  <span className="text-error.1 text-xs absolute inset-y-[3.1rem]">
+                    {errors.date?.message}
+                  </span>
+                </div>
                 <div className="flex flex-col w-full gap-1 relative">
                   <Input
                     type="password"
@@ -131,7 +138,7 @@ const SignUp = () => {
                     prepend={<IconCafe Icon={PiLock} />}
                     register={register}
                   />
-                  <span className="text-error.1 text-xs absolute inset-y-[3.2rem]">
+                  <span className="text-error.1 text-xs absolute inset-y-[3.1rem]">
                     {errors.password?.message}
                   </span>
                 </div>
@@ -143,7 +150,7 @@ const SignUp = () => {
                     prepend={<IconCafe Icon={PiLock} />}
                     register={register}
                   />
-                  <span className="text-error.1 text-xs absolute inset-y-[3.2rem]">
+                  <span className="text-error.1 text-xs absolute inset-y-[3.1rem]">
                     {errors.confirm_password?.message}
                   </span>
                 </div>
