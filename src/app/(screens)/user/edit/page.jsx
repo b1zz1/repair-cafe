@@ -6,7 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import Header from "@components/layout/header";
-import DatePicker from "@/components/ui/input/datePicker";
 import IconCafe from "@components/ui/iconCafe";
 import WaveCafe from "@/components/ui/waveCafe";
 import Input from "@/components/ui/input/input";
