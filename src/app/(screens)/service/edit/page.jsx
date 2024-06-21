@@ -3,6 +3,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from 'next/navigation';
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -46,6 +47,8 @@ const EditService = () => {
     const savedContent = localStorage.getItem("content");
     return savedContent ? savedContent : "Basico";
   });
+
+  const router = useRouter();
 
   const serviceID = 1;
 
@@ -109,6 +112,7 @@ const EditService = () => {
         throw new Error(result.message || "Something went wrong");
       }
       // Handle successful response
+      router.push(`/service/read/${serviceID}`);
     } catch (error) {
       console.error("Error:", error.message);
     }

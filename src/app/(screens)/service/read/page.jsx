@@ -3,8 +3,8 @@
 
 import React, { useEffect, useState } from "react";
 import Header from "@components/layout/Header";
-import WaveCafe from "@/components/ui/waveCafe";
-import MidiaCafe from "@/components/ui/midiaCafe";
+import WaveCafe from "@components/ui/waveCafe";
+import MidiaCafe from "@components/ui/midiaCafe";
 
 let nome = "Nome do Ponto de Reparo";
 let localizacao = "Localizacao";
@@ -19,9 +19,9 @@ let linkedin = "https://www.linkedin.com"
 
 
 import photoMidia from "/public/photoMidia.svg";
-import TagCafe from "@/components/ui/tagCafe";
-import { Button } from "@/components/ui/button";
-import IconCafe from "@/components/ui/iconCafe";
+import TagCafe from "@components/ui/tagCafe";
+import { Button } from "@components/ui/button";
+import IconCafe from "@components/ui/iconCafe";
 import {
   PiFacebookLogoFill,
   PiInstagramLogoFill,
@@ -30,6 +30,44 @@ import {
 } from "react-icons/pi";
 
 const Search = () => {
+    const [serviceData, setServiceData] = useState({
+        name: "",
+        email: "",
+        description: "",
+        phone: "",
+    });
+
+      const serviceID = 1;
+
+      useEffect(() => {
+      const fetchService = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/service/read/${serviceID}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        });
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || "Something went wrong");
+      }
+      const data = await response.json();
+      console.log("Fetched data:", data);
+      setServiceData({
+        name: data.name,
+        email: data.email,
+        description: data.description,
+        phone: data.phone,
+      });
+      } catch (error) {
+        console.error("Error fetching user data:", error.message);
+      }
+    };
+    fetchService();
+    }, [serviceID])
+
   return (
     <section className="flex w-full h-fit flex-col items-center bg-purple.1 md:h-screen">
       <Header />
@@ -38,7 +76,7 @@ const Search = () => {
             <MidiaCafe src={photoMidia} variant="shadow"/>
           <div className="flex flex-col gap-8">
             <h1 className="text-xl text-purple.5 sm:text-4xl">
-              {nome}
+              {serviceData.name}
             </h1>
             <div className="flex flex-col gap-1">
               <text className="text-teste.1 text-sm truncate-5-lines">
@@ -50,7 +88,7 @@ const Search = () => {
               <text className="text-teste.1 text-sm truncate-5-lines">
                 Descrição
               </text>
-              <text className=" text-white.5 text-base">{descricao}</text>
+              <text className=" text-white.5 text-base">{serviceData.description}</text>
             </div>
             <div className="flex flex-wrap flex-row h-fit gap-2">
               <TagCafe text={tag} />
@@ -60,9 +98,9 @@ const Search = () => {
             <div className="flex flex-col justify-between gap-5 md:flex-row md:gap-0">
               <div className="flex flex-col gap-1">
                 <text className="text-teste.1 text-sm truncate-5-lines">
-                  Reparador
+                  Email
                 </text>
-                <text className=" text-white.5 text-base">{usuario}</text>
+                <text className=" text-white.5 text-base">{serviceData.email}</text>
               </div>
               <div className="flex flex-row gap-5 items-center ">
                 <text className="text-teste.1 text-sm truncate-5-lines">
