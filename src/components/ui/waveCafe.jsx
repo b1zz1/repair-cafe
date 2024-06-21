@@ -10,14 +10,18 @@ const WaveCafe = ({ variant = "default" }) => {
         <Image
           src={wave}
           alt="Wave"
-          className="pointer-events-none bg-purple.1"
+          className="pointer-events-none bg-purple.1 select-none"
+          height="auto"
+          width="auto"
         />
       )}
       {variant == "alt" && (
         <Image
           src={waveAlt}
           alt="Wave"
-          className=" pointer-events-none bg-purple.1"
+          className=" pointer-events-none bg-purple.1 select-none"
+          height="auto"
+          width="auto"
         />
       )}
     </>

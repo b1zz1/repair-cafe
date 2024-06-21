@@ -2,22 +2,25 @@ import Image from "next/image";
 
 import cardMidia from "/public/cardMidia.svg";
 
-const MidiaCafe = ({ variant = "default", midia = ""}) => {
+const MidiaCafe = ({ variant = "default", src}) => {
   return (
     <>
       {variant == "default" && (
         <Image
-          src={cardMidia}
+          src={src}
           alt="Midia"
-          width={320}
-          className="rounded-md "
+          className="rounded-md h-fit w-fit select-none"
+          height="auto"
+          width="auto"
         />
       )}
-      {variant == "custom" && (
+      {variant == "shadow" && (
         <Image
-          src={midia}
-          alt="Wave"
-          width={320}
+          src={src}
+          alt="Midia"
+          className="rounded-md h-fit w-fit select-none shadow-md"
+          height="auto"
+          width="auto"
         />
       )}
     </>

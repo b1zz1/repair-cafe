@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/popover";
 import SelectCafe from "./select/selectCafe";
 import IconCafe from "./iconCafe";
+import MultiSelectCafe from "./select/multiSelectCafe";
 
 const FilterButtonCafé = () => {
   return (
@@ -22,11 +23,11 @@ const FilterButtonCafé = () => {
 
       <PopoverContent sideOffset="1" className="bg-white.1">
         <SelectCafe size="m"> Serviço </SelectCafe>
-        <SelectCafe
+        <MultiSelectCafe
           size="m"
           IconLeft={PiSparkle}
           placeholder="Especialidade"
-        ></SelectCafe>
+        ></MultiSelectCafe>
         <SelectCafe
           size="m"
           IconLeft={PiMapTrifold}

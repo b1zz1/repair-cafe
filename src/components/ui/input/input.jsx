@@ -9,11 +9,14 @@ const Input = React.forwardRef(
       size = "full",
       prepend,
       append,
+      hasError = false,
       placeholderFile = "Selecione um arquivo...",
+      register,
       ...props
     },
     ref
   ) => {
+    var register2 = () => {}
     const [fileName, setFileName] = React.useState("");
     const internalRef = React.useRef(null);
 
@@ -39,7 +42,7 @@ const Input = React.forwardRef(
     };
 
     return (
-      <div className={`relative w-full ${sizeClasses[size]}`}>
+      <div className={`relative w-full ${sizeClasses[size]} `}>
         {prepend && (
           <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-purple.5 text-lg">
             {prepend}
@@ -52,6 +55,7 @@ const Input = React.forwardRef(
               className="hidden"
               ref={internalRef}
               onChange={handleFileChange}
+              {...register}
               {...props}
             />
             <input
@@ -61,6 +65,7 @@ const Input = React.forwardRef(
                 sizeClasses[size],
                 className
               )}
+              {...register}
               placeholder={placeholderFile}
               value={fileName}
               readOnly
@@ -70,13 +75,16 @@ const Input = React.forwardRef(
         ) : (
           <input
             type={type}
+
             className={cn(
               "flex  bg-purple.3 autofill:bg-purple.5 font-semibold placeholder:text-sm placeholder:font-medium text-purple.5 h-12 rounded-md p-3 text-base shadow-sm transition-colors placeholder:text-purple.4 focus-visible:outline-none focus-visible:ring-2 focus:ring-purple.5/70 disabled:cursor-not-allowed disabled:opacity-50 pl-10",
               sizeClasses[size],
+              { 'border border-error.2': hasError },
               className
             )}
             ref={internalRef}
             {...props}
+            {...(register ? register(props?.name || '') : {})}
           />
         )}
         {append && (
