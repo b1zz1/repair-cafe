@@ -11,6 +11,8 @@ const WaveCafe = ({ variant = "default" }) => {
           src={wave}
           alt="Wave"
           className="pointer-events-none bg-purple.1 select-none"
+          height="auto"
+          width="auto"
         />
       )}
       {variant == "alt" && (
@@ -18,6 +20,8 @@ const WaveCafe = ({ variant = "default" }) => {
           src={waveAlt}
           alt="Wave"
           className=" pointer-events-none bg-purple.1 select-none"
+          height="auto"
+          width="auto"
         />
       )}
     </>

@@ -10,6 +10,8 @@ const MidiaCafe = ({ variant = "default", src}) => {
           src={src}
           alt="Midia"
           className="rounded-md h-fit w-fit select-none"
+          height="auto"
+          width="auto"
         />
       )}
       {variant == "shadow" && (
@@ -17,6 +19,8 @@ const MidiaCafe = ({ variant = "default", src}) => {
           src={src}
           alt="Midia"
           className="rounded-md h-fit w-fit select-none shadow-md"
+          height="auto"
+          width="auto"
         />
       )}
     </>
