@@ -76,7 +76,7 @@ const Input = React.forwardRef(
             type={type}
 
             className={cn(
-              "flex  bg-purple.3 autofill:bg-purple.5 font-semibold placeholder:text-sm placeholder:font-medium text-purple.5 h-12 rounded-md p-3 text-base shadow-sm transition-colors placeholder:text-purple.4 focus-visible:outline-none focus-visible:ring-2 focus:ring-purple.5/70 disabled:cursor-not-allowed disabled:opacity-50 pl-10",
+              "flex bg-purple.3 autofill:bg-purple.5 font-semibold placeholder:text-sm placeholder:font-medium text-purple.5 h-12 rounded-md p-3 text-base shadow-sm transition-colors placeholder:text-purple.4 focus-visible:outline-none focus-visible:ring-2 focus:ring-purple.5/70 disabled:cursor-not-allowed disabled:opacity-50 pl-10",
               sizeClasses[size],
               { 'border border-error.2': hasError },
               className

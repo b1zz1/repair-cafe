@@ -50,7 +50,7 @@ const EditService = () => {
 
   const router = useRouter();
 
-  const serviceID = 1;
+  const serviceID = 6;
 
   const {
     register,
@@ -89,6 +89,7 @@ const EditService = () => {
         console.error("Error fetching user data:", error.message);
       }
     };
+
     fetchService();
     }, [setValue, serviceID])
   const onSubmit = async () => {
@@ -112,7 +113,7 @@ const EditService = () => {
         throw new Error(result.message || "Something went wrong");
       }
       // Handle successful response
-      router.push(`/service/read/${serviceID}`);
+      router.push(`/service/read/`);
     } catch (error) {
       console.error("Error:", error.message);
     }

@@ -37,7 +37,7 @@ const Search = () => {
         phone: "",
     });
 
-      const serviceID = 1;
+      const serviceID = 6;
 
       useEffect(() => {
       const fetchService = async () => {

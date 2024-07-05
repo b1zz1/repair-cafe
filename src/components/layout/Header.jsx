@@ -11,9 +11,12 @@ const Header = () => {
         <h3 className="text-xl text-purple.5 select-none">Repair Cafe</h3>
       </Link>
       <div className="flex justify-end items-center gap-6">
-        <Link href="/service/new-service">
+        <Link href="/service/create">
           <Button>Criar Ponto de Reparo</Button>
-        </Link>    
+        </Link>
+        <Link href="/service/edit">
+          <Button>Editar Ponto</Button>
+        </Link>
         <Link href="/user/sign-up">
           <Button
             size="avatar"

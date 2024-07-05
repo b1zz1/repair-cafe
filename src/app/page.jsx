@@ -37,7 +37,7 @@ const Home = () => {
           <div className="flex w-fit flex-col gap-8 px-12">
             <div>
               <h1 className="text-5xl text-purple.5 select-none">
-                Olá, <b>{name}</b>
+                Olá, {name}
               </h1>
               <h1 className="text-5xl text-purple.5 select-none">
                 O que vamos reparar hoje?

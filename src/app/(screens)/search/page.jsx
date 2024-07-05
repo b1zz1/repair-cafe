@@ -23,6 +23,7 @@ const Search = () => {
               append={<FilterButtonCafé />}
             />
           </div>
+            <a href={"/service/read"}>
           <div className="flex flex-row flex-wrap justify-center w-fit gap-4 sm:gap-8">
             <Card />
             <Card />
@@ -31,6 +32,7 @@ const Search = () => {
             <Card />
             <Card />
           </div>
+            </a>
         </div>
       </main>
     </section>
